@@ -7,6 +7,6 @@
 
 #endif //STOCKCONTROL_PILHA_H
 
-class Pilha{
+class Fila{
 
 };
