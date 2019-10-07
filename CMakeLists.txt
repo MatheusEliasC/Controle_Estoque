@@ -3,4 +3,4 @@ project(stockControl)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(stockControl main.cpp Fila.h Produto.h)
+add_executable(stockControl main.cpp Fila.h Produto.h Estoque.h)

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Fila.h"
+#include "Produto.h"
 
 std::string menuCrud(){
    return "\n1 - INSERIR PRODUTO\n2 - REMOVER PRODUTO\n3 - LISTAR PRODUTOS\n4 - SAIR\n";
