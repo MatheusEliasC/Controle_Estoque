@@ -3,7 +3,7 @@
 #include "Produto.h"
 
 std::string menuCrud(){
-   return "\n1 - INSERIR PRODUTO\n2 - REMOVER PRODUTO\n3 - LISTAR PRODUTOS\n4 - SAIR\n";
+   return "\n1 - INSERIR PRODUTO\n2 - REMOVER PRODUTO\n3 - LISTAR PRODUTOS\n4 - SAIR\n";//TODO Colocar a função buscar produto
 };
 
 using namespace std;

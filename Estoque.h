@@ -3,7 +3,7 @@
 //
 
 #include "Produto.h"
-#include "Fila.h"
+
 
 #ifndef STOCKCONTROL_ESTOQUE_H
 #define STOCKCONTROL_ESTOQUE_H
@@ -26,7 +26,7 @@ public:
         iniciaProduto();
     }
 
-    Fila<Produto> fila;
+//    Fila<Produto> fila;
 
     void InserirProduto(){
         string nome;
