@@ -8,8 +8,6 @@
 #ifndef STOCKCONTROL_ESTOQUE_H
 #define STOCKCONTROL_ESTOQUE_H
 
-#endif //STOCKCONTROL_ESTOQUE_H
-
 using namespace std;
 
 class Estoque{
@@ -88,3 +86,6 @@ public:
 
     };
 };
+
+#endif //STOCKCONTROL_ESTOQUE_H
+

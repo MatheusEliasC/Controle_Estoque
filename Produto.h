@@ -1,26 +1,16 @@
 //
 // Created by unifrsilva on 07/10/2019.
 //
-#include <cstdlib>
-
+#include <time.h>
 #include <iostream>
+
 #ifndef STOCKCONTROL_PRODUTO_H
 #define STOCKCONTROL_PRODUTO_H
 
-#endif //STOCKCONTROL_PRODUTO_H
 /**
  * 'Produto' is a class to represent the product of the store.
  */
 class Produto{
-public:
-    Produto(int quantidade,double preco, int tamanho){
-        this->quantidade=quantidade;
-        this->preco = preco;
-        this->tamanho = tamanho;
-        id = gerarId();
-    }
-    //Produto(){}
-
 private:
     int quantidade;
     double preco;
@@ -28,11 +18,25 @@ private:
     int id;
 
     int gerarId(){
-        return quantidade++;//(rand() % 100000) + 1;//TODO trocar função de randomização
+        int r;
+        srand(time(NULL));
+        r = (rand() % 10000) + 1;
+        return r;
     }
 
     //getters and setters
 public:
+    Produto(){
+        id = gerarId();
+    }
+
+    Produto(int quantidade,double preco, int tamanho){
+        this->quantidade=quantidade;
+        this->preco = preco;
+        this->tamanho = tamanho;
+        id = gerarId();
+    }
+
     int getQuantidade() const {
         return quantidade;
     }
@@ -61,7 +65,6 @@ public:
         return id;
     }
 
-    void setId(int id) {
-        Produto::id = id;
-    }
 };
+
+#endif //STOCKCONTROL_PRODUTO_H
