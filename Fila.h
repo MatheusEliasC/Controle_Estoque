@@ -1,10 +1,11 @@
 //
 // Created by JPascual on 14/10/2019.
 //
-
+#include <iostream>
 #ifndef STOCKCONTROL_FILA_H
 #define STOCKCONTROL_FILA_H
-#include <iostream>
+
+
 using namespace std;
 
 template <typename T>
@@ -34,34 +35,4 @@ public:
     FilaCircular (const FilaCircular& outra);            //implementar
     FilaCircular& operator= (const FilaCircular& outra); //implementar
 };
-
-int main (int argc, char* argv[]) {
-    FilaCircular<float> f (3);
-    f.Enfileira (5.2);
-    f.Enfileira (2.2);
-    f.Enfileira (3.2);
-    f.Enfileira (9.2);
-    f.Enfileira (5.1);
-
-    bool ok = false;
-    do {
-        float r = f.Desenfileira (&ok);
-        if (ok)
-            cout << r << endl;
-    } while (ok); // Deve Imprimir somente 5.2, 2.2 e 3.2
-
-    f.Enfileira (3);
-    f.Enfileira (2);
-    f.Enfileira (1);
-    FilaCircular<float> f2 (10);
-    f2 = f;
-
-    cout << f.Desenfileira ()  << endl; // Deve Imprimir 3
-    cout << f2.Desenfileira () << endl; // Deve Imprimir 3
-    cout << f2.Desenfileira () << endl; // Deve Imprimir 2
-    cout << f.Desenfileira ()  << endl; // Deve Imprimir 2
-
-    return 0;
-}
-
 #endif //STOCKCONTROL_FILA_H
