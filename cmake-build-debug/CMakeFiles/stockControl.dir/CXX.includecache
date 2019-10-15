@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/renan/CLionProjects/Controle_Estoque/Produto.h
+time.h
+-
+iostream
+-
+
+/cygdrive/c/Users/renan/CLionProjects/Controle_Estoque/main.cpp
+iostream
+-
+Produto.h
+/cygdrive/c/Users/renan/CLionProjects/Controle_Estoque/Produto.h
+
