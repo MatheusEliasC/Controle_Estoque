@@ -5,34 +5,69 @@
 #ifndef STOCKCONTROL_FILA_H
 #define STOCKCONTROL_FILA_H
 
-
 using namespace std;
 
 template <typename T>
-class IFila {
+class IFila{
 public:
-    virtual bool Enfileira (T valor) = 0;
-    virtual T Desenfileira (bool* ok) = 0;
-    virtual void Imprime () = 0;
-    virtual ~IFila () {
-    }
+    virtual bool Enfileira(T valor) = 0;
+    virtual T Desenfileira(bool* ok) = 0;
+    virtual void Imprime() = 0;
+    virtual ~IFila(){};
 };
 
 template <typename T>
-class FilaCircular : IFila<T> {
+class Fila : public IFila<T>{
 private:
     T* v;
-    int Max;
     int i;
     int f;
-
+    int max;
 public:
-    explicit FilaCircular (int Max);                     //implementar
-    virtual ~FilaCircular ();                            //implementar
-    bool Enfileira (T valor) override;                   //implementar
-    void Imprime () override;                            //implementar
-    T Desenfileira (bool* ok = NULL) override;           //implementar
-    FilaCircular (const FilaCircular& outra);            //implementar
-    FilaCircular& operator= (const FilaCircular& outra); //implementar
+    Fila(int maximo) {
+        v = new T[maximo+1];
+        i=f=0;
+        max = maximo+1;
+    }
+
+    ~Fila(){
+        delete[] v;
+    }
+
+    bool Enfileira(T valor){
+        if( (f+1) % max == i)
+            return false;
+
+        v[f] = valor;
+        f = (f + 1) % max;
+        return true;
+    }
+
+    T Desenfileira(bool* ok = NULL){
+        if( i == f) {
+            if(ok){
+                *ok = false;
+            }
+            return v[i];
+        }
+
+        T temp = v[i];
+        i = (i + 1) % max;
+        if(ok)
+            *ok = true;
+        return temp;
+
+    }
+
+    void Imprime(){
+
+        int j;
+
+        for(j = i; j!=f; j = (j+1) % max){
+            cout << v[j] << " ";
+        }
+        cout << endl;
+    }
+
 };
 #endif //STOCKCONTROL_FILA_H

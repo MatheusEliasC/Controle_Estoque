@@ -3,19 +3,22 @@
 //
 #include <time.h>
 #include <iostream>
+#include <string.h>
 
 #ifndef STOCKCONTROL_PRODUTO_H
 #define STOCKCONTROL_PRODUTO_H
-
+using namespace std;
 /**
  * 'Produto' is a class to represent the product of the store.
  */
 class Produto{
 private:
+    string nome;
     int quantidade;
     double preco;
     int tamanho;
     int id;
+    struct tm *data;
 
     int gerarId(){
         int r;
@@ -30,11 +33,17 @@ public:
         id = gerarId();
     }
 
-    Produto(int quantidade,double preco, int tamanho){
-        this->quantidade=quantidade;
+    Produto(string nome, int quantidade,double preco, int tamanho){
+        this->nome = nome;
+        this->quantidade = quantidade;
         this->preco = preco;
         this->tamanho = tamanho;
         id = gerarId();
+        //Data
+        time_t agr;
+        time(&agr);
+        data = localtime(&agr);
+
     }
 
     int getQuantidade() const {
@@ -59,6 +68,14 @@ public:
 
     void setTamanho(int tamanho) {
         Produto::tamanho = tamanho;
+    }
+
+    std::string getNome(){
+        return nome;
+    }
+
+    struct tm* getData(){
+        return data;
     }
 
     int getId() const {
