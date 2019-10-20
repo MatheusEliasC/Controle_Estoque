@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     std::cout << "================> Controle de Estoque <==============" << std::endl;
     int opc;
-    Estoque e;
+    Estoque e(100);
 
     while(opc != 5){
         cout << menuCrud();

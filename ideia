@@ -1,0 +1,13 @@
+No trabalho de estrutura decidimos fazer do seguinte modo, a princípio,
+o CRUD vai ser normal e implementado numa LES com busca binária, as outras
+estruturas vão estar presentes na função LISTAR, quando o usuário acessar a função,
+este vai pedir um método de listar (por), TAMANHO, PREÇO, NOME(Ordem alfabética) e DATA.
+TAMANHO - Implementado com LDE+BUSCA BINARIA.
+PREÇO - Implementado com FILA(do menor para o maior).
+NOME - Utiliza a própria busca da LES, já implementada na classe ESTOQUE.
+DATA - Implementado com PILHA(O primeiro objeto instanciado é o último exibido).
+As classes iniciais, serão o MAIN, PRODUTO, ESTOQUE e as demais estruturas:
+MAIN - Utilizada como um 'controller', somente faz o acesso inicial do CRUD e chama o Estoque e as estruturas.
+PRODUTO - Utilizada como um 'model', contem somente as variáveis de um produto.
+ESTOQUE - Utilizada como um 'service', nela controlá-se to-do o CRUD.
+na função BUSCAR vamos utilizar uma ÁRVORE BINÁRIA de busca

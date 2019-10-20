@@ -4,6 +4,8 @@
 
 #include "Produto.h"
 #include "Fila.h"
+#include "LES.h"
+#include "Arvore.h"
 #include <sstream>
 
 
@@ -15,26 +17,22 @@ using namespace std;
 
 class Estoque{
 private:
-    int capacidadeMaxima;
     //Fila <Produto> f(5);
+    virtual LES<Produto> l();
+    virtual ArvBin<int> a();
 
+//    void iniciaProduto(){
+//        Produto relogio(5, 15.00, 0);
+//        Produto oculos(3, 9.00, 0);
+//        Produto quadroGrande(10, 56.00, 2);
+//        Produto vasoMedio(4, 25.00, 1);
+//    }
 
-    /*void iniciaProduto(){
-        Produto relogio(5, 15.00, 0);
-        Produto oculos(3, 9.00, 0);
-        Produto quadroGrande(10, 56.00, 2);
-        Produto vasoMedio(4, 25.00, 1);
-    }*/
-    /*
-     * LDE<Produto> l;
-     * */
 
 
 public:
-    Estoque(){}
-    Estoque(int Max){
-        capacidadeMaxima = Max;
-
+    explicit Estoque(int Max){
+        l().setTamanhoMax(Max);
         //iniciaProduto();
 
     }
@@ -42,7 +40,7 @@ public:
 
 
     void InserirProduto(){
-//        string nome;
+
         char buffer[80];
         char nome[30];
         string nomeStr;
@@ -91,7 +89,9 @@ public:
         //Este novo valor é uma escolha do usuário como o primeiro.
         Produto novo(nomeStr, quantidade, preco, tamanho);
 
-//        fila.add(novo);
+
+
+        l().Insere(novo);
         //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
 
         cout<<"Produto adicionado com sucesso!"<<endl;
@@ -104,20 +104,29 @@ public:
         puts(buffer);
     };
 
-    void BuscarProduto(int idx){
- 
-        //Para imprimir data
-        //
+    Produto BuscarProduto(int id){
+        for(int i=0;i<l().getN();i++){
+            a().Insere(l().Busca(&i,0).getId());
+        }
+        return l().Busca(nullptr,a().Busca(id)->valor);
     };
 
-    void RemoverProduto(int idx){
-
+    void RemoverProduto(){
+        int idProduto;
+        cout << "Digite o id do produto a ser removido" << endl;
+        cin >> idProduto;
+        Produto temp = BuscarProduto(idProduto);
+        l().Remove(l().Busca(temp));
+        cout << "Produto removido com sucesso" << endl;
     };
 
     void ListarProduto(){
-
     };
 };
+
+LES<Produto> Estoque::l() {
+    return LES<Produto>(0);
+}
 
 #endif //STOCKCONTROL_ESTOQUE_H
 
