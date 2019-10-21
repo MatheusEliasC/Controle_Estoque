@@ -4,6 +4,7 @@
 #include <time.h>
 #include <iostream>
 #include <string.h>
+#include <cstdlib>
 
 #ifndef STOCKCONTROL_PRODUTO_H
 #define STOCKCONTROL_PRODUTO_H
@@ -29,15 +30,14 @@ private:
 
     //getters and setters
 public:
-    Produto(){
-        id = gerarId();
-    }
+    Produto(){/*id = gerarId();*/}
 
     Produto(string nome, int quantidade,double preco, int tamanho){
         this->nome = nome;
         this->quantidade = quantidade;
         this->preco = preco;
         this->tamanho = tamanho;
+        //Id
         id = gerarId();
         //Data
         time_t agr;
@@ -50,25 +50,14 @@ public:
         return quantidade;
     }
 
-    void setQuantidade(int quantidade) {
-        Produto::quantidade = quantidade;
-    }
-
     double getPreco() const {
         return preco;
-    }
-
-    void setPreco(double preco) {
-        Produto::preco = preco;
     }
 
     int getTamanho() const {
         return tamanho;
     }
 
-    void setTamanho(int tamanho) {
-        Produto::tamanho = tamanho;
-    }
 
     std::string getNome(){
         return nome;

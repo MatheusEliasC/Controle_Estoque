@@ -7,6 +7,7 @@
 #include "LES.h"
 #include "Arvore.h"
 #include <sstream>
+#include <cstdio>
 
 
 
@@ -17,34 +18,27 @@ using namespace std;
 
 class Estoque{
 private:
+    int capacidadeMax;
     //Fila <Produto> f(5);
-    virtual LES<Produto> l();
-    virtual ArvBin<int> a();
-
-//    void iniciaProduto(){
-//        Produto relogio(5, 15.00, 0);
-//        Produto oculos(3, 9.00, 0);
-//        Produto quadroGrande(10, 56.00, 2);
-//        Produto vasoMedio(4, 25.00, 1);
-//    }
-
+    LES<Produto> l();
+    //virtual ArvBin<int> a();
+    int quantidadeAtual;
 
 
 public:
+    explicit Estoque(){ }
     explicit Estoque(int Max){
-        l().setTamanhoMax(Max);
-        //iniciaProduto();
-
+//        l().setTamanhoMax(Max);
+        capacidadeMax = Max;
+        quantidadeAtual = 0;
     }
 
 
 
-    void InserirProduto(){
+    bool InserirProduto(){
 
         char buffer[80];
-        char nome[30];
         string nomeStr;
-        string qtd;
         int quantidade = 0, tamanho = 0;
         double preco;
         //Criando as variáveis nome, quantidade, tamanho , preco(preço) podemos receber as informações através do usuário.
@@ -88,10 +82,16 @@ public:
         // caso este não seja válido um loop se inicia até que um novo valor seja válido.
         //Este novo valor é uma escolha do usuário como o primeiro.
         Produto novo(nomeStr, quantidade, preco, tamanho);
+        //l().Insere(novo) retorna false quando a lista estiver cheia ou seja quando o número de elementos da lista for igual a capacidade maxima que foi passado pelo construtor.
 
+        quantidadeAtual += quantidade; //Incrementa a quantidade atual de acordo com a quantidade de produtos inserida.
+        //O estoque estará cheio quando a quantidadeAtual for maior ou igual a capacidade máxima.
+        if(quantidadeAtual >= capacidadeMax){
+            cout << "Estoque cheio!" << endl;
+            return false;
+        }
 
-
-        l().Insere(novo);
+        //l().Insere(novo);
         //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
 
         cout<<"Produto adicionado com sucesso!"<<endl;
@@ -102,31 +102,33 @@ public:
         cout << "Id: "<< novo.getId() << endl;
         strftime(buffer,80,"Data: %d/%m/%y", novo.getData());
         puts(buffer);
+        return true;
     };
 
     Produto BuscarProduto(int id){
-        for(int i=0;i<l().getN();i++){
+        /*for(int i=0;i<l().getN();i++){
             a().Insere(l().Busca(&i,0).getId());
         }
-        return l().Busca(nullptr,a().Busca(id)->valor);
+        return l().Busca(nullptr,a().Busca(id)->valor);*/
     };
 
     void RemoverProduto(){
-        int idProduto;
+       /* int idProduto;
         cout << "Digite o id do produto a ser removido" << endl;
         cin >> idProduto;
         Produto temp = BuscarProduto(idProduto);
         l().Remove(l().Busca(temp));
         cout << "Produto removido com sucesso" << endl;
+        */
     };
 
     void ListarProduto(){
     };
 };
 
-LES<Produto> Estoque::l() {
-    return LES<Produto>(0);
-}
+//LES<Produto> Estoque::l() {
+    //return LES<Produto>(0);
+//}
 
 #endif //STOCKCONTROL_ESTOQUE_H
 

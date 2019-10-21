@@ -151,6 +151,6 @@ public:
     }
 
     virtual ~ArvBin(){
-        while(Remove(raiz->valor));
+        //while(Remove(raiz->valor));
     };
 };

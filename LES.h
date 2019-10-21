@@ -11,7 +11,7 @@
 #include <stdexcept>
 #include <string>
 
-template <typename T>
+/*template <typename T>
 class ILista{
 public:
     virtual bool Insere(T) = 0;
@@ -22,24 +22,24 @@ public:
     virtual ~ILista(){
 
     };
-};
+};*/
 
 template <typename T>
-class LES : public ILista<T>{
+class LES {
 private:
     int tamanhoMax;
     int n;
-    int *v;
+    T *v;
 public:
     LES(int tamanhoMax){
         this->tamanhoMax = tamanhoMax;
         this->n = 0;
-        this->v = new int[tamanhoMax];
+        this->v = new T[tamanhoMax];
     }
     LES(){
         this->tamanhoMax = tamanhoMax;
         this->n = 0;
-        this->v = new int[tamanhoMax];
+        this->v = new T[tamanhoMax];
     }
     ~LES(){
         delete[] this->v;
@@ -57,7 +57,7 @@ public:
         if(n == tamanhoMax){
             return false;//Impossível inserir, lista cheia
         }
-        for(i=0;i<n && v[i]<x;++i){ }
+        for(i=0;i<n && v[i].getId() < x.getId();++i){ }
         for(int j = n;j>i;--j){
             v[j] = v[j-1];
         }
@@ -66,13 +66,13 @@ public:
     }
 
     T Busca(int *pos, int id){
-        if(n=0) {
+        if(n == 0) {
             return NULL;
         }
         if(pos != nullptr)
-            return v[pos];
-        for(int i = 0;i<n;i++) {
-            if (v[i]->id == id)
+            return v[*pos]; // tipo int
+        for(int i = 0; i<n ;i++) {
+            if (v[i].id == id)
                 return v[i];
         }
     }

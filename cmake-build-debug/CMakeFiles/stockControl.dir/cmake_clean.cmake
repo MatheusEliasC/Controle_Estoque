@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/stockControl.dir/main.cpp.o"
-  "libstockControl.dll.a"
-  "stockControl.exe"
+  "CMakeFiles/stockControl.dir/main.cpp.obj"
   "stockControl.pdb"
+  "stockControl.exe"
+  "stockControl.exe.manifest"
+  "libstockControl.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

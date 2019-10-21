@@ -21,10 +21,11 @@ int main() {
         }
 
         else if(opc == 2){
-            //int id;
-            //cout << "Digite o ID do produto: ";
-            //cin >> id;
-            //e.BuscarProduto(id);
+            /*int id;
+            cout << "Digite o ID do produto: ";
+            cin >> id;
+            e.BuscarProduto(id);*/
+
         }
 
         else if(opc == 3){
