@@ -1,14 +1,18 @@
 #include <iostream>
+#include <cstdio>
+#include <stdlib.h>
 #include "Produto.h"
 #include "Estoque.h"
 
-std::string menuCrud(){
+
+std::string menuCrud(){\
    return "\n1 - INSERIR PRODUTO\n2 - REMOVER PRODUTO\n3 - LISTAR PRODUTOS\n4 - BUSCAR PRODUTO\n5 - SAIR\n";
 };
 
 using namespace std;
 int main() {
     std::cout << "================> Controle de Estoque <==============" << std::endl;
+    std::cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
     int opc;
     Estoque e(100);
 
@@ -16,6 +20,7 @@ int main() {
         cout << menuCrud();
         cout << "Digite uma opcao: ";
         cin >> opc;
+        std::cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
         if(opc == 1){
             e.InserirProduto();
         }
@@ -35,6 +40,7 @@ int main() {
         else if(opc == 4){
 
         }
+
     }
 
     return 0;
