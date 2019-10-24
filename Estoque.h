@@ -8,6 +8,7 @@
 #include "Arvore.h"
 #include <sstream>
 #include <cstdio>
+#include <string.h>
 
 
 
@@ -19,16 +20,14 @@ using namespace std;
 class Estoque{
 private:
     int capacidadeMax;
-    //Fila <Produto> f(5);
-    LES<Produto> l();
-    //virtual ArvBin<int> a();
+    LES<Produto> l;
     int quantidadeAtual;
 
 
 public:
     explicit Estoque(){ }
     explicit Estoque(int Max){
-//        l().setTamanhoMax(Max);
+        l.setTamanhoMax(Max);
         capacidadeMax = Max;
         quantidadeAtual = 0;
     }
@@ -40,6 +39,7 @@ public:
         char buffer[80];
         string nomeStr;
         int quantidade = 0, tamanho = 0;
+        string precoString;
         double preco;
         //Criando as variáveis nome, quantidade, tamanho , preco(preço) podemos receber as informações através do usuário.
 
@@ -72,7 +72,8 @@ public:
         do{
             tentePreco = false;
             cout << "Digite o preço equivalente a um produto: " << endl;
-            cin >> preco;
+            cin >> precoString;
+            stringstream(precoString)>>preco;
             if (preco < 0.00 || preco >= 5000.00) {
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
@@ -91,7 +92,7 @@ public:
             return false;
         }
 
-        //l().Insere(novo);
+        l.Insere(novo);
         //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
 
         cout<<"Produto adicionado com sucesso!"<<endl;
@@ -113,16 +114,29 @@ public:
     };
 
     void RemoverProduto(){
-       /* int idProduto;
-        cout << "Digite o id do produto a ser removido" << endl;
-        cin >> idProduto;
-        Produto temp = BuscarProduto(idProduto);
-        l().Remove(l().Busca(temp));
-        cout << "Produto removido com sucesso" << endl;
-        */
+        int pos;
+        cout << "Escolha o produto: "<<endl;
+        l.Imprime();
+        cout << "Digite a posição do produto."<<endl;
+        cin>>pos;
+        if(l.Remove(pos-1))
+            cout << "Produto removido com sucesso! Voltando ao menu..."<<endl;
+        else
+            cout << "Erro!" << endl;
     };
 
-    void ListarProduto(){
+    void ListarTamanho(){
+    };
+
+    void ListarPreco(){
+    };
+
+    void ListarNome(){
+        //TODO ORDEM ALFABÉTICA
+        l.Imprime();
+    };
+
+    void ListarData(){
     };
 };
 

@@ -9,39 +9,61 @@ std::string menuCrud(){\
    return "\n1 - INSERIR PRODUTO\n2 - REMOVER PRODUTO\n3 - LISTAR PRODUTOS\n4 - BUSCAR PRODUTO\n5 - SAIR\n";
 };
 
+void menuListar(){\
+    cout<< "\n/OPÇÕES DE LISTA:"<<endl;
+    cout<< "\n1 - POR TAMANHO\n2 - POR PRECO\n3 - POR NOME\n4 - POR DATA\n5 - VOLTAR\n";
+};
+
 using namespace std;
 int main() {
-    std::cout << "================> Controle de Estoque <==============" << std::endl;
-    std::cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
+    cout << "================> Controle de Estoque <==============" << endl;
+    cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
     int opc;
     Estoque e(100);
 
-    while(opc != 5){
+    do{
         cout << menuCrud();
-        cout << "Digite uma opcao: ";
+        cout << "Digite uma opcao: "<<endl;
         cin >> opc;
-        std::cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
+        cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
         if(opc == 1){
             e.InserirProduto();
         }
 
         else if(opc == 2){
-            /*int id;
-            cout << "Digite o ID do produto: ";
-            cin >> id;
-            e.BuscarProduto(id);*/
-
+            e.RemoverProduto();
         }
 
         else if(opc == 3){
-
+            menuListar();
+            int opcLista;
+            cin>>opcLista;
+            switch(opcLista){
+                case 1:
+                    e.ListarTamanho();
+                    break;
+                case 2:
+                    e.ListarPreco();
+                    break;
+                case 3:
+                    e.ListarNome();
+                    break;
+                case 4:
+                    e.ListarData();
+                    break;
+                case 5:
+                    cout<< "Voltando ao menu!" << endl;
+                    break;
+                default:
+                    cout <<"Opção não encontrada, tente novamente"<<endl;
+            }
         }
 
         else if(opc == 4){
 
         }
 
-    }
+    }while(opc != 5);
 
     return 0;
 }
