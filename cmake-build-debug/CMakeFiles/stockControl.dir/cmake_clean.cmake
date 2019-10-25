@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/stockControl.dir/main.cpp.obj"
+  "CMakeFiles/stockControl.dir/main.cpp.o"
   "stockControl.pdb"
   "stockControl.exe"
-  "stockControl.exe.manifest"
   "libstockControl.dll.a"
 )
 
