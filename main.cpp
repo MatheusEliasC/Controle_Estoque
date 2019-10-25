@@ -6,12 +6,12 @@
 
 
 void *menuCrud(
-        cout <<"╔═══════════════════════════════════════════════════════════════════════╗" << std::endl;
-cout << "║     INSERIR PRODUTO                                                                 ║" << std::endl;
-cout << "║     REMOVER PRODUTO                                                                  ║" << std::endl;
-cout << "║     LISTAR PRODUTOS                                                                ║ " << std::endl;
-cout << "║     BUSCAR PRODUTO                                                                 ║" << std::endl;
-cout << "║     SAIR                                                               ║ " << std::endl;
+        cout <<"╔════════════════════════════════════════════════════════════════╗" << std::endl;
+cout << "║     INSERIR PRODUTO                                                   ║" << std::endl;
+cout << "║     REMOVER PRODUTO                                                   ║" << std::endl;
+cout << "║     LISTAR PRODUTOS                                                   ║ " << std::endl;
+cout << "║     BUSCAR PRODUTO                                                    ║" << std::endl;
+cout << "║     SAIR                                                              ║ " << std::endl;
 cout << "║                                                                       ║" << std::endl;
 cout << "║                                                                       ║ " << std::endl;
 cout << "║                                                                       ║ " << std::endl;
