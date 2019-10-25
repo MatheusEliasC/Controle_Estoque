@@ -5,9 +5,18 @@
 #include "Estoque.h"
 
 
-std::string menuCrud(){\
-   return "\n1 - INSERIR PRODUTO\n2 - REMOVER PRODUTO\n3 - LISTAR PRODUTOS\n4 - BUSCAR PRODUTO\n5 - SAIR\n";
-};
+void *menuCrud(
+        cout <<"╔═══════════════════════════════════════════════════════════════════════╗" << std::endl;
+cout << "║     INSERIR PRODUTO                                                                 ║" << std::endl;
+cout << "║     REMOVER PRODUTO                                                                  ║" << std::endl;
+cout << "║     LISTAR PRODUTOS                                                                ║ " << std::endl;
+cout << "║     BUSCAR PRODUTO                                                                 ║" << std::endl;
+cout << "║     SAIR                                                               ║ " << std::endl;
+cout << "║                                                                       ║" << std::endl;
+cout << "║                                                                       ║ " << std::endl;
+cout << "║                                                                       ║ " << std::endl;
+cout << "╚═══════════════════════════════════════════════════════════════════════╝" << std::endl;
+){};
 
 void menuListar(){\
     cout<< "\n/OPÇÕES DE LISTA:"<<endl;
@@ -18,20 +27,18 @@ using namespace std;
 int main() {
     cout << "================> Controle de Estoque <==============" << endl;
     cout << "╔═══════════════════════════════════════════════════════════════════════╗" << std::endl;
-    cout << "║                                                                       ║" << std::endl;
+    cout << "║  INSERIR PRODUTO  - REMOVER PRODUTO  n3 - LISTAR PRODUTOSn4 - BUSCAR PRODUTO5 - SAIR;                                                                     ║" << std::endl;
     cout << "║                                                                       ║ " << std::endl;
     cout << "╚═══════════════════════════════════════════════════════════════════════╝" << std::endl;
     int opc;
     Estoque e(100);
 
     do{
-        cout << menuCrud();
+        menuCrud();
         cout << "Digite uma opcao: "<<endl;
         cin >> opc;
-        cout << "╔═══════════════════════════════════════════════════════════════════════╗" << std::endl;
-        cout << "║                                                                       ║" << std::endl;
-        cout << "║                                                                       ║ " << std::endl;
-        cout << "╚═══════════════════════════════════════════════════════════════════════╝" << std::endl;
+
+
         if(opc == 1){
             e.InserirProduto();
         }
