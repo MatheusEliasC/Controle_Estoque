@@ -17,7 +17,10 @@ void menuListar(){\
 using namespace std;
 int main() {
     cout << "================> Controle de Estoque <==============" << endl;
-    cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
+    cout << "╔═══════════════════════════════════════════════════════════════════════╗" << std::endl;
+    cout << "║                                                                       ║" << std::endl;
+    cout << "║                                                                       ║ " << std::endl;
+    cout << "╚═══════════════════════════════════════════════════════════════════════╝" << std::endl;
     int opc;
     Estoque e(100);
 
@@ -25,7 +28,10 @@ int main() {
         cout << menuCrud();
         cout << "Digite uma opcao: "<<endl;
         cin >> opc;
-        cout << "\n\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB" << std::endl;
+        cout << "╔═══════════════════════════════════════════════════════════════════════╗" << std::endl;
+        cout << "║                                                                       ║" << std::endl;
+        cout << "║                                                                       ║ " << std::endl;
+        cout << "╚═══════════════════════════════════════════════════════════════════════╝" << std::endl;
         if(opc == 1){
             e.InserirProduto();
         }
