@@ -66,7 +66,7 @@ int main() {
         }
 
         else if(opc == 4){
-
+            //TODO IMPLEMENTEAR BUSCAR PRODUTO NA CLASSE ESTOQUE
         }
 
     }while(opc != 5);

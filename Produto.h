@@ -71,6 +71,10 @@ public:
         return id;
     }
 
+    void setQuantidade(int quantidade) {
+        Produto::quantidade = quantidade;
+    }
+
 };
 
 #endif //STOCKCONTROL_PRODUTO_H

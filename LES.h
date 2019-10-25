@@ -18,23 +18,30 @@ private:
     int n;
     T *v;
 public:
-//    LES(int tamanhoMax){
-//        this->tamanhoMax = tamanhoMax;
-//        this->n = 0;
-//        this->v = new T[tamanhoMax];
-//    }
+
     LES(){
         tamanhoMax = 10;
         n = 0;
         v = new T[tamanhoMax];
     }
+
     ~LES(){
         delete[] this->v;
     }
 
-    void Imprime(){
+    void ImprimeNome(){
         for(int i=0;i<n;i++){
             cout << i+1<<"- " << v[i].getNome() << " "<<endl;
+        }
+    }
+
+    void ImprimeTudo(){
+        for(int i=0;i<n;i++){
+            cout << i+1<<"- Produto: " << v[i].getNome()
+                 <<" Quantidade: " <<v[i].getQuantidade()
+                 <<" Preço: "<<v[i].getPreco()
+                 <<" Tamanho: "<< v[i].getTamanho()
+                 <<" Id: "<< v[i].getId()<<endl;
         }
     }
 
@@ -53,66 +60,15 @@ public:
         n++;
     }
 
-//    T Busca(int *pos, int id){
-//        if(n == 0) {
-//            return NULL;
-//        }
-//        if(pos != nullptr)
-//            return v[*pos]; // tipo int
-//        for(int i = 0; i<n ;i++) {
-//            if (v[i].id == id)
-//                return v[i];
-//        }
-//    }
-//
-//
-//    int Busca(T x){
-//        int inicio=0;
-//        int fim=n-1;
-//        int f=0;
-//        int meio = 0;
-//        int valor;
-//
-//        while(inicio<=fim && f==0)
-//        {
-//            meio=(inicio+fim)/2;
-//            if(x>v[meio])
-//            {
-//                inicio=meio+1;
-//                valor=v[meio];
-//            }
-//            else if(x<v[meio])
-//            {
-//                fim=meio-1;
-//                valor=v[meio];
-//            }
-//            else {
-//                f = 1;
-//            }
-//        }
-//        if(f==1){
-//            return meio;
-//        }
-//        else{
-//            return -1;
-//        }
-//    }
-
-//    bool Remove(int pos){
-//        int i;
-//        for(i=0;i<n; ++i){ }
-//        if(i == n-1){
-//            return false;
-//        }
-//        for(int j=i;j<n;j++){
-//            if(j+1 >= n){
-//                break;
-//            }
-//            v[j] = v[j+1];
-//        }
-//        n--;
-//        return true;
-//    }
+    T BuscaPos(int pos){
+        int i;
+        bool temp = false;
+        for(i=0;i<n;i++) {
+            if (i == pos){
+                return v[i];
+            }
+        }
+    }
 
     bool Remove(int pos){
         int i;
@@ -127,6 +83,10 @@ public:
         if(temp == true)
             n--;
         return temp;
+    }
+
+    void Substituir(T prod, int pos){
+        v[pos] = prod;
     }
 
     const T&operator[](int idx){}

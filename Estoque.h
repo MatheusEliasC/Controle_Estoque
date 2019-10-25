@@ -34,7 +34,7 @@ public:
 
 
 
-    bool InserirProduto(){
+    bool InserirProduto() {
 
         char buffer[80];
         string nomeStr;
@@ -47,7 +47,6 @@ public:
         //As variáveis 'tenteTamanho' e 'tentePreco' servem como pivôs para testes de condição.
 
         cout << "Digite o nome do(s) produto(s): ";
-        //cin >> nome; //TODO Consertar erro de leitura da string nome.
         cin >> nomeStr;
 
         //Recebe o nome.
@@ -56,7 +55,7 @@ public:
         //Recebe a quantidade.
 
 
-        do{
+        do {
             tenteTamanho = false;
             cout << "Digite o tamanho do(s) produto(s) (1-Pequeno 2-Médio 3-Grande): " << endl;
             cin >> tamanho;
@@ -65,11 +64,11 @@ public:
                 tenteTamanho = true;
                 cout << "Tamanho inválido, tente novamente." << endl;
             }
-        }while(tenteTamanho);
+        } while (tenteTamanho);
         //No escopo do 'do' acima, recebemos o tamanho do produto, caso este não seja válido um loop se inicia até que um novo valor seja válido.
         //Este novo valor é uma escolha do usuário como o primeiro.
 
-        do{
+        do {
             tentePreco = false;
             cout << "Digite o preço equivalente a um produto: " << endl;
             cin >> precoString;
@@ -78,7 +77,7 @@ public:
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
             }
-        }while(tentePreco);
+        } while (tentePreco);
         //No escopo deste 'do', recebemos, desta vez, o preço referente a uma unidade do produto,
         // caso este não seja válido um loop se inicia até que um novo valor seja válido.
         //Este novo valor é uma escolha do usuário como o primeiro.
@@ -87,62 +86,98 @@ public:
 
         quantidadeAtual += quantidade; //Incrementa a quantidade atual de acordo com a quantidade de produtos inserida.
         //O estoque estará cheio quando a quantidadeAtual for maior ou igual a capacidade máxima.
-        if(quantidadeAtual >= capacidadeMax){
+        if (quantidadeAtual >= capacidadeMax) {
             cout << "Estoque cheio!" << endl;
             return false;
         }
 
-        l.Insere(novo);
-        //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
+        if (l.Insere(novo)){
+            cout << endl << "Produto adicionado com sucesso!" << endl;
+            //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
+            cout << "Informações do produto inserido: " << endl << endl
+                 << "Nome: " << novo.getNome() << endl
+                 << "Preco: R$ " << novo.getPreco() << endl
+                 << "Quantidade: " << novo.getQuantidade() << endl
+                 << "Tamanho: " << novo.getTamanho() << endl
+                 << "Id: " << novo.getId() << endl;
+            strftime(buffer, 80, "Data da inserção: %d/%m/%y", novo.getData());
+            puts(buffer);
+            return true;
+        }
+        else {
+            cout << "Erro ao inserir produto na LES!" << endl;
+            return false;
+        }
 
-        cout<<"Produto adicionado com sucesso!"<<endl;
-        /*cout << "Nome do produto: "<< novo.getNome() << endl;
-        cout << "Preco do produto: R$ "<< novo.getPreco() << endl;
-        cout << "Quantidade: "<< novo.getQuantidade() << endl;
-        cout << "Tamanho: "<< novo.getTamanho() << endl;*/
-        cout << "Id: "<< novo.getId() << endl;
-        strftime(buffer,80,"Data: %d/%m/%y", novo.getData());
-        puts(buffer);
-        return true;
     };
 
     Produto BuscarProduto(int id){
-        /*for(int i=0;i<l().getN();i++){
-            a().Insere(l().Busca(&i,0).getId());
-        }
-        return l().Busca(nullptr,a().Busca(id)->valor);*/
+        //TODO Implementar Buscar com Árvore
     };
 
     void RemoverProduto(){
-        int pos;
+        int pos, quantRemover;
         cout << "Escolha o produto: "<<endl;
-        l.Imprime();
-        cout << "Digite a posição do produto."<<endl;
+        l.ImprimeTudo();
+        cout << "Digite a posição do produto. Ou '0' para cancelar."<<endl;
         cin>>pos;
-        if(l.Remove(pos-1))
-            cout << "Produto removido com sucesso! Voltando ao menu..."<<endl;
-        else
-            cout << "Erro!" << endl;
+        if(pos == 0){
+            cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
+            return;
+        }
+        cout << l.BuscaPos(pos-1).getNome()<< endl;
+        int quantidade = l.BuscaPos(pos-1).getQuantidade();
+        cout << "O produto na posição "<< pos << " contém "<< quantidade << " de produtos." << endl;
+        cout << "Digite a quantidade desse tipo de produto que você deseja remover. Ou '0' para cancelar." << endl;
+        cin  >> quantRemover;
+        if(quantRemover == 0){
+            cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
+            return;
+        }
+        else if(quantRemover < quantidade){
+            l.BuscaPos(pos-1).setQuantidade(quantidade-quantRemover);
+            cout << "Quantidade de produtos reajustada... Quantidade atual para o produto " << l.BuscaPos(pos-1).getNome()
+                 << " é igual a: " << l.BuscaPos(pos-1).getQuantidade() << endl;
+        }
+        else if(quantRemover = quantidade){
+            if(l.Remove(pos-1))
+                cout << "Produto removido com sucesso! Voltando ao menu..."<<endl;
+            else
+                cout << "Erro ao remover o produto da LES!" << endl;
+        }
+        else if(quantRemover < quantidade){
+            cout << "A quantidade inserida é menor do que existe no estoque para este produto!" << endl;
+            cout << "Voltando ao menu..." << endl;//TODO OLHA AQUI, seria interessante fazer um loop para o usuário tentar novamente?
+        }
+        //TODO ARRUMAR SISTEMA DE REMOVER QUANTIDADE, ELE APARECE QUE REMOVE MAS NÃO REMOVE
     };
 
     void ListarTamanho(){
+        //TODO Aplicar LDE
+        cout << "Falta LDE!" << endl;
     };
 
     void ListarPreco(){
+        //TODO Aplicar FILA
+        cout << "Falta FILA!" << endl;
     };
 
     void ListarNome(){
         //TODO ORDEM ALFABÉTICA
-        l.Imprime();
+        if(l.getN()<=0){
+            cout << "Nenhum produto encontrado! Voltando ao menu..."<<endl;
+            return;
+        }
+
+        l.ImprimeNome();
     };
 
     void ListarData(){
+        //TODO Aplicar Pilha
+        cout << "Falta Pilha!" << endl;
     };
 };
 
-//LES<Produto> Estoque::l() {
-    //return LES<Produto>(0);
-//}
 
 #endif //STOCKCONTROL_ESTOQUE_H
 
