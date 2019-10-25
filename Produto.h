@@ -16,6 +16,7 @@ class Produto{
 private:
     string nome;
     int quantidade;
+    int qtdMin;
     double preco;
     int tamanho;
     int id;
@@ -32,7 +33,7 @@ private:
 public:
     Produto(){/*id = gerarId();*/}
 
-    Produto(string nome, int quantidade,double preco, int tamanho){
+    Produto(string nome, int quantidade, double preco, int tamanho){
         this->nome = nome;
         this->quantidade = quantidade;
         this->preco = preco;
@@ -58,7 +59,6 @@ public:
         return tamanho;
     }
 
-
     std::string getNome(){
         return nome;
     }
@@ -69,6 +69,10 @@ public:
 
     int getId() const {
         return id;
+    }
+
+    int getQtdMin(){
+        return qtdMin;
     }
 
 };

@@ -8,9 +8,6 @@
 #include "Arvore.h"
 #include <sstream>
 #include <cstdio>
-#include <string.h>
-
-
 
 #ifndef STOCKCONTROL_ESTOQUE_H
 #define STOCKCONTROL_ESTOQUE_H
@@ -20,26 +17,24 @@ using namespace std;
 class Estoque{
 private:
     int capacidadeMax;
-    LES<Produto> l;
+    //Fila <Produto> f(5);
+    LES<Produto> l();
+    //virtual ArvBin<int> a();
     int quantidadeAtual;
-
 
 public:
     explicit Estoque(){ }
     explicit Estoque(int Max){
-        l.setTamanhoMax(Max);
+//        l().setTamanhoMax(Max);
         capacidadeMax = Max;
         quantidadeAtual = 0;
     }
 
 
-
     bool InserirProduto(){
-
         char buffer[80];
         string nomeStr;
         int quantidade = 0, tamanho = 0;
-        string precoString;
         double preco;
         //Criando as variáveis nome, quantidade, tamanho , preco(preço) podemos receber as informações através do usuário.
 
@@ -51,10 +46,16 @@ public:
         cin >> nomeStr;
 
         //Recebe o nome.
-        cout << "Digite a quantidade de produtos: ";
+        cout << "Digite a quantidade de produtos a ser inserida: ";
         cin >> quantidade;
-        //Recebe a quantidade.
+        quantidadeAtual += quantidade; //Incrementa a quantidade atual de acordo com a quantidade de produtos inserida.
 
+        if(quantidadeAtual >= capacidadeMax){
+            cout << "Estoque cheio!" << endl;
+            return false;
+        }
+
+        //Recebe a quantidade.
 
         do{
             tenteTamanho = false;
@@ -72,8 +73,7 @@ public:
         do{
             tentePreco = false;
             cout << "Digite o preço equivalente a um produto: " << endl;
-            cin >> precoString;
-            stringstream(precoString)>>preco;
+            cin >> preco;
             if (preco < 0.00 || preco >= 5000.00) {
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
@@ -82,27 +82,35 @@ public:
         //No escopo deste 'do', recebemos, desta vez, o preço referente a uma unidade do produto,
         // caso este não seja válido um loop se inicia até que um novo valor seja válido.
         //Este novo valor é uma escolha do usuário como o primeiro.
-        Produto novo(nomeStr, quantidade, preco, tamanho);
+        //novo = new Produto[quantidade];
+
+//        for(int i = 0; i < quantidade; i++)
+//            novo(nomeStr, quantidade, preco, tamanho);
+        Produto *novo;
+        novo = new Produto[quantidade-1];
+        for(int i = 0; i < quantidade; i++){
+            //Inicializando cada produto adicionado com os devidos valores nos construtores.
+            novo[i] = Produto(nomeStr, quantidade, preco, tamanho);
+        }
+        //chama construtor dos novos produtos.
+       // Produto novo(nomeStr, quantidade, preco, tamanho);
+
         //l().Insere(novo) retorna false quando a lista estiver cheia ou seja quando o número de elementos da lista for igual a capacidade maxima que foi passado pelo construtor.
 
-        quantidadeAtual += quantidade; //Incrementa a quantidade atual de acordo com a quantidade de produtos inserida.
         //O estoque estará cheio quando a quantidadeAtual for maior ou igual a capacidade máxima.
-        if(quantidadeAtual >= capacidadeMax){
-            cout << "Estoque cheio!" << endl;
-            return false;
-        }
-
-        l.Insere(novo);
+//        for(int i = 0; i < quantidade; i++)
+//            l().Insere(novo[i]);
         //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
 
-        cout<<"Produto adicionado com sucesso!"<<endl;
-        /*cout << "Nome do produto: "<< novo.getNome() << endl;
-        cout << "Preco do produto: R$ "<< novo.getPreco() << endl;
-        cout << "Quantidade: "<< novo.getQuantidade() << endl;
-        cout << "Tamanho: "<< novo.getTamanho() << endl;*/
-        cout << "Id: "<< novo.getId() << endl;
-        strftime(buffer,80,"Data: %d/%m/%y", novo.getData());
-        puts(buffer);
+        cout<<"Produto(s) adicionado com sucesso!"<<endl;
+        /*
+         * for(int i = 0; i < quantidade; i++){
+         *      novo[i].imprimeDados();
+         * }
+         * */
+        for(int i = 0; i < quantidade; i++)
+            strftime(buffer,80,"Data: %d/%m/%y", novo[i].getData());
+            puts(buffer);
         return true;
     };
 
@@ -114,29 +122,16 @@ public:
     };
 
     void RemoverProduto(){
-        int pos;
-        cout << "Escolha o produto: "<<endl;
-        l.Imprime();
-        cout << "Digite a posição do produto."<<endl;
-        cin>>pos;
-        if(l.Remove(pos-1))
-            cout << "Produto removido com sucesso! Voltando ao menu..."<<endl;
-        else
-            cout << "Erro!" << endl;
+       /* int idProduto;
+        cout << "Digite o id do produto a ser removido" << endl;
+        cin >> idProduto;
+        Produto temp = BuscarProduto(idProduto);
+        l().Remove(l().Busca(temp));
+        cout << "Produto removido com sucesso" << endl;
+        */
     };
 
-    void ListarTamanho(){
-    };
-
-    void ListarPreco(){
-    };
-
-    void ListarNome(){
-        //TODO ORDEM ALFABÉTICA
-        l.Imprime();
-    };
-
-    void ListarData(){
+    void ListarProduto(){
     };
 };
 
