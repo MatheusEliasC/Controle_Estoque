@@ -127,28 +127,34 @@ public:
         }
         cout << l.BuscaPos(pos-1).getNome()<< endl;
         int quantidade = l.BuscaPos(pos-1).getQuantidade();
-        cout << "O produto na posição "<< pos << " contém "<< quantidade << " de produtos." << endl;
-        cout << "Digite a quantidade desse tipo de produto que você deseja remover. Ou '0' para cancelar." << endl;
-        cin  >> quantRemover;
-        if(quantRemover == 0){
-            cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
-            return;
-        }
-        else if(quantRemover < quantidade){
-            l.BuscaPos(pos-1).setQuantidade(quantidade-quantRemover);
-            cout << "Quantidade de produtos reajustada... Quantidade atual para o produto " << l.BuscaPos(pos-1).getNome()
-                 << " é igual a: " << l.BuscaPos(pos-1).getQuantidade() << endl;
-        }
-        else if(quantRemover = quantidade){
-            if(l.Remove(pos-1))
-                cout << "Produto removido com sucesso! Voltando ao menu..."<<endl;
-            else
-                cout << "Erro ao remover o produto da LES!" << endl;
-        }
-        else if(quantRemover < quantidade){
-            cout << "A quantidade inserida é menor do que existe no estoque para este produto!" << endl;
-            cout << "Voltando ao menu..." << endl;//TODO OLHA AQUI, seria interessante fazer um loop para o usuário tentar novamente?
-        }
+        bool tenteQuant;
+        do {
+            tenteQuant = false;
+            cout << "O produto na posição " << pos << " contém " << quantidade << " de produtos." << endl;
+            cout << "Digite a quantidade desse tipo de produto que você deseja remover. Ou '0' para cancelar." << endl;
+            cin >> quantRemover;
+            if (quantRemover == 0) {
+                cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
+                return;
+            } else if (quantRemover < quantidade) {
+                Produto novo(l.BuscaPos(pos-1).getNome(),quantidade-quantRemover,l.BuscaPos(pos-1).getPreco(),l.BuscaPos(pos-1).getTamanho());
+                if(l.ReInsere(novo,pos-1))
+                    cout<<"entrou"<<endl;
+                l.ImprimeTudo();
+                cout << "Quantidade de produtos reajustada... Quantidade atual para o produto "
+                     << l.BuscaPos(pos - 1).getNome()
+                     << " é igual a: " << l.BuscaPos(pos - 1).getQuantidade() << endl;
+            } else if (quantRemover = quantidade) {
+                if (l.Remove(pos - 1))
+                    cout << "Produto removido com sucesso! Voltando ao menu..." << endl;
+                else
+                    cout << "Erro ao remover o produto da LES!" << endl;
+            } else if (quantRemover < quantidade) {
+                cout << "A quantidade inserida é menor do que existe no estoque para este produto!" << endl
+                     << "Tente novamente..." << endl;
+                tenteQuant = true;
+            }
+        }while(tenteQuant == true);
         //TODO ARRUMAR SISTEMA DE REMOVER QUANTIDADE, ELE APARECE QUE REMOVE MAS NÃO REMOVE
     };
 

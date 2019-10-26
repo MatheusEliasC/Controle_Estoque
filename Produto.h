@@ -72,7 +72,7 @@ public:
     }
 
     void setQuantidade(int quantidade) {
-        Produto::quantidade = quantidade;
+        this->quantidade = quantidade;
     }
 
 };

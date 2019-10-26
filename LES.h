@@ -60,6 +60,15 @@ public:
         n++;
     }
 
+    bool ReInsere(T x,int pos){
+        int i;
+        if(pos > n-1){
+            return false;//Impossível inserir, posição maior que limite
+        }
+        v[pos] = x;
+        return true;
+    }
+
     T BuscaPos(int pos){
         int i;
         bool temp = false;

@@ -1,3 +1,3 @@
-/cygdrive/c/Users/JPascual/CLionProjects/Controle_Estoque/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/JPascual/CLionProjects/Controle_Estoque/cmake-build-debug/CMakeFiles/stockControl.dir
-/cygdrive/c/Users/JPascual/CLionProjects/Controle_Estoque/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/CMakeFiles/stockControl.dir
+C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/CMakeFiles/rebuild_cache.dir
