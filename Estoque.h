@@ -8,7 +8,8 @@
 #include "Arvore.h"
 #include <sstream>
 #include <cstdio>
-#include <string.h>
+#include <string>
+#include <algorithm>
 
 
 
@@ -31,8 +32,6 @@ public:
         capacidadeMax = Max;
         quantidadeAtual = 0;
     }
-
-
 
     bool InserirProduto() {
 
@@ -111,8 +110,41 @@ public:
 
     };
 
-    Produto BuscarProduto(int id){
-        //TODO Implementar Buscar com Árvore
+    bool BuscarProduto(int id){
+        ArvBin<int> arv;
+        if(l.getN()==0){
+            cout << "Erro ao inserir produtos na árvore!" << endl;
+            return false;
+        }
+        for(int i=0;i<l.getN();i++){
+            arv.Insere(l.BuscaPorPos(i).getId());
+        }
+        if(arv.Busca(id)){
+            cout << "O produto foi encontrado." << endl;
+            cout << "Deseja ver as informações do produto encontrado? (Sim ou Não)" << endl;
+            string opc;
+            int tolower ( int c );
+            cin >> opc;
+            for_each(opc.begin(), opc.end(), [](char & c){
+                c = ::tolower(c);
+            });
+            if (opc.rfind("si", 0) == 0) {
+                cout << "ID do produto: " << l.BuscaPorID(id).getId() << endl
+                     << "Nome do produto: " << l.BuscaPorID(id).getNome() << endl
+                     << "Quantidade de produto: " << l.BuscaPorID(id).getQuantidade() << endl
+                     << "Tamanho do produto: " << l.BuscaPorID(id).getTamanho() << endl
+                     << "Preço do produto: " << l.BuscaPorID(id).getPreco()<< endl
+                     << "Data de entrada no sistema: " << l.BuscaPorID(id).getData()<< endl << endl
+                     << "Voltando ao menu..." << endl;
+            }
+            else{
+                cout << "Retornando ao menu!" << endl;
+            }
+            return true;
+        } else{
+            cout << "Produto não encontrado! Retornando ao menu" << endl;
+            return false;
+        }
     };
 
     void RemoverProduto(){
@@ -125,8 +157,8 @@ public:
             cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
             return;
         }
-        cout << l.BuscaPos(pos-1).getNome()<< endl;
-        int quantidade = l.BuscaPos(pos-1).getQuantidade();
+        cout << l.BuscaPorPos(pos-1).getNome()<< endl;
+        int quantidade = l.BuscaPorPos(pos-1).getQuantidade();
         bool tenteQuant;
         do {
             tenteQuant = false;
@@ -137,14 +169,14 @@ public:
                 cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
                 return;
             } else if (quantRemover < quantidade) {
-                Produto novo(l.BuscaPos(pos-1).getNome(),quantidade-quantRemover,l.BuscaPos(pos-1).getPreco(),l.BuscaPos(pos-1).getTamanho());
+                Produto novo(l.BuscaPorPos(pos-1).getNome(),quantidade-quantRemover,l.BuscaPorPos(pos-1).getPreco(),l.BuscaPorPos(pos-1).getTamanho());
                 if(l.ReInsere(novo,pos-1))
                     cout<<"entrou"<<endl;
                 l.ImprimeTudo();
                 cout << "Quantidade de produtos reajustada... Quantidade atual para o produto "
-                     << l.BuscaPos(pos - 1).getNome()
-                     << " é igual a: " << l.BuscaPos(pos - 1).getQuantidade() << endl;
-            } else if (quantRemover = quantidade) {
+                     << l.BuscaPorPos(pos - 1).getNome()
+                     << " é igual a: " << l.BuscaPorPos(pos - 1).getQuantidade() << endl;
+            } else if (quantRemover == quantidade) {
                 if (l.Remove(pos - 1))
                     cout << "Produto removido com sucesso! Voltando ao menu..." << endl;
                 else
@@ -154,7 +186,7 @@ public:
                      << "Tente novamente..." << endl;
                 tenteQuant = true;
             }
-        }while(tenteQuant == true);
+        }while(tenteQuant);
         //TODO ARRUMAR SISTEMA DE REMOVER QUANTIDADE, ELE APARECE QUE REMOVE MAS NÃO REMOVE
     };
 

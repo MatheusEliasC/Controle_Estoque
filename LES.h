@@ -69,11 +69,18 @@ public:
         return true;
     }
 
-    T BuscaPos(int pos){
+    T BuscaPorPos(int pos){
         int i;
-        bool temp = false;
         for(i=0;i<n;i++) {
             if (i == pos){
+                return v[i];
+            }
+        }
+    }
+
+    T BuscaPorID(int id){
+        for(int i=0;i<n;i++) {
+            if (v[i].getId() == id){
                 return v[i];
             }
         }
