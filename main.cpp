@@ -43,41 +43,59 @@ int main() {
         cin >> opc;
 
 
-        if(opc == 1){
-            e.InserirProduto();
-        }
+        switch(opc){
+            case 1://Inserir
+                e.InserirProduto();
+                break;
 
-        else if(opc == 2){
-            e.RemoverProduto();
-        }
+            case 2://Remover
+                e.RemoverProduto();
+                break;
 
-        else if(opc == 3){
-            menuListar();
-            int opcLista;
-            cin>>opcLista;
-            switch(opcLista){
-                case 1:
-                    e.ListarTamanho();
-                    break;
-                case 2:
-                    e.ListarPreco();
-                    break;
-                case 3:
-                    e.ListarNome();
-                    break;
-                case 4:
-                    e.ListarData();
-                    break;
-                case 5:
+            case 3://Listar
+                menuListar();
+                int opcLista;
+                cin>>opcLista;
+                switch(opcLista){
+                    case 1:
+                        e.ListarTamanho();
+                        break;
+                    case 2:
+                        e.ListarPreco();
+                        break;
+                    case 3:
+                        e.ListarNome();
+                        break;
+                    case 4:
+                        e.ListarData();
+                        break;
+                    case 5:
+                        cout<< "Voltando ao menu!" << endl;
+                        break;
+                    default:
+                        cout <<"Opção não encontrada, tente novamente"<<endl;
+                }
+                break;
+
+            case 4: //Buscar
+                cout << "Digite o id do produto que está buscando. Digite 0 para voltar." << endl;
+                int buscar;
+                cin >> buscar;
+                if(buscar == 0){
                     cout<< "Voltando ao menu!" << endl;
                     break;
-                default:
-                    cout <<"Opção não encontrada, tente novamente"<<endl;
-            }
-        }
+                }
+                else{
+                    e.BuscarProduto(buscar);
+                }
+                break;
 
-        else if(opc == 4){
-            //TODO IMPLEMENTEAR BUSCAR PRODUTO NA CLASSE ESTOQUE
+            case 5: //Sair
+                cout << "Até mais!" << endl;
+                break;
+
+            default:
+                cout << "Opção não encontrada, tente novamente!" << endl;
         }
 
     }while(opc != 5);

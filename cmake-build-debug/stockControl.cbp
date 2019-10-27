@@ -8,99 +8,97 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="stockControl">
-				<Option output="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/stockControl.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include/c++"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include/c++/mingw32"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include/c++/backward"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/../../../../include"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include-fixed"/>
-					<Add directory="/mingw/lib/gcc/mingw32/../../../include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 stockControl"/>
-					<CompileFile command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="stockControl/fast">
-				<Option output="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/stockControl.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include/c++"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include/c++/mingw32"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include/c++/backward"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/../../../../include"/>
-					<Add directory="c:\program files (x86)\dev-cpp\bin\../lib/gcc/mingw32/4.6.1/include-fixed"/>
-					<Add directory="/mingw/lib/gcc/mingw32/../../../include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 stockControl/fast"/>
-					<CompileFile command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~2/Dev-Cpp/bin/make.exe -f &quot;C:/Users/unifmcruz/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="stockControl">
+				<Option output="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/stockControl.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 stockControl"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="stockControl/fast">
+				<Option output="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/stockControl.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 stockControl/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/Arvore.h">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/Arvore.h">
 			<Option target="stockControl"/>
 		</Unit>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/Estoque.h">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/Estoque.h">
 			<Option target="stockControl"/>
 		</Unit>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/Fila.h">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/Fila.h">
 			<Option target="stockControl"/>
 		</Unit>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/LES.h">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/LES.h">
 			<Option target="stockControl"/>
 		</Unit>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/Produto.h">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/Produto.h">
 			<Option target="stockControl"/>
 		</Unit>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/main.cpp">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/main.cpp">
 			<Option target="stockControl"/>
 		</Unit>
-		<Unit filename="C:/Users/unifmcruz/CLionProjects/Controle_Estoque/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/Matheus/CLionProjects/Controle_Estoque/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

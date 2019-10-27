@@ -1,12 +1,3 @@
-//
-// Created by Matheus on 20/10/2019.
-//
-
-#ifndef STOCKCONTROL_ARVORE_H
-#define STOCKCONTROL_ARVORE_H
-
-#endif //STOCKCONTROL_ARVORE_H
-
 #include <iostream>
 
 using namespace std;
@@ -44,21 +35,19 @@ private:
 
 public:
     ArvBin(){
-        raiz = NULL;
+        raiz = nullptr;
         n=0;
     };
 
     bool Insere(T valor) {
         No<T> *novo = new No<T>;
-        if (!novo)
-            return false;
 
         novo->valor = valor;
-        novo->esq = NULL;
-        novo->dir = NULL;
-        novo->pai = NULL;
+        novo->esq = nullptr;
+        novo->dir = nullptr;
+        novo->pai = nullptr;
 
-        No<T> *anterior = NULL;
+        No<T> *anterior = nullptr;
         No<T> *atual = raiz;
 
         while (atual) {
@@ -83,7 +72,7 @@ public:
         return true;
     }
     bool Remove(T valor) {
-        No<T>* anterior = NULL;
+        No<T>* anterior = nullptr;
         No<T>* atual = raiz;
 
         while(atual && atual->valor != valor){
@@ -94,18 +83,18 @@ public:
             else
                 atual = atual->dir;
         }
-        if(atual == NULL)
+        if(atual == nullptr)
             return false;
-        int filhos = (atual->esq != NULL) + (atual->dir != NULL);
+        int filhos = (atual->esq != nullptr) + (atual->dir != nullptr);
         if(filhos == 0){
             if(atual->pai){
                 if(atual == atual->pai->esq)
-                    atual->pai->esq = NULL;
+                    atual->pai->esq = nullptr;
                 else
-                    atual->pai->dir = NULL;
+                    atual->pai->dir = nullptr;
             }
             else
-                raiz = NULL;
+                raiz = nullptr;
             delete atual;
             n--;
         }
@@ -137,7 +126,7 @@ public:
     }
     bool Remove(No<T> *r) {}
     No<T> *Busca(T valor) {
-        No<T>* anterior = NULL;
+        No<T>* anterior = nullptr;
         No<T>* atual = raiz;
 
         while(atual && atual->valor != valor){
@@ -151,6 +140,6 @@ public:
     }
 
     virtual ~ArvBin(){
-        //while(Remove(raiz->valor));
+        while(Remove(raiz->valor));
     };
 };
