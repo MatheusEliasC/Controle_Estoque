@@ -33,31 +33,47 @@ public:
         quantidadeAtual = 0;
     }
 
+    string getValor(int valor){
+        string valorStr = to_string(valor);
+        replace( valorStr.begin(), valorStr.end(), '.', ',');
+        return valorStr;
+    }
+
     bool InserirProduto() {
 
         char buffer[80];
-        string nomeStr;
+        char nomeChar[100];
+        string nomeStr, quantidadeStr, tamanhoStr;
         int quantidade = 0, tamanho = 0;
         string precoString;
         double preco;
         //Criando as variáveis nome, quantidade, tamanho , preco(preço) podemos receber as informações através do usuário.
 
-        bool tenteTamanho, tentePreco;
+        bool tenteTamanho, tentePreco, tenteQuant;
         //As variáveis 'tenteTamanho' e 'tentePreco' servem como pivôs para testes de condição.
 
         cout << "Digite o nome do(s) produto(s): ";
-        cin >> nomeStr;
-
+        getline(cin >> ws, nomeStr);
         //Recebe o nome.
-        cout << "Digite a quantidade de produtos: ";
-        cin >> quantidade;
+
+        do {
+            tenteQuant = false;
+            cout << "Digite a quantidade de produtos: ";
+            cin >> quantidadeStr;
+            stringstream(quantidadeStr) >> quantidade;
+            if (quantidade <= 0 || quantidade > 500) {
+                cout << "Quantidade inválida, tente novamente!" << endl;
+                tenteQuant = true;
+            }
+        }while (tenteQuant);
         //Recebe a quantidade.
 
 
         do {
             tenteTamanho = false;
             cout << "Digite o tamanho do(s) produto(s) (1-Pequeno 2-Médio 3-Grande): " << endl;
-            cin >> tamanho;
+            cin >> tamanhoStr;
+            stringstream(tamanhoStr) >> tamanho;
             tamanho--;
             if (tamanho < 0 || tamanho > 2) {
                 tenteTamanho = true;
@@ -71,8 +87,9 @@ public:
             tentePreco = false;
             cout << "Digite o preço equivalente a um produto: " << endl;
             cin >> precoString;
+            replace( precoString.begin(), precoString.end(), ',', '.');
             stringstream(precoString)>>preco;
-            if (preco < 0.00 || preco >= 5000.00) {
+            if (preco < 0.00 || preco >= 1500.00) {
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
             }

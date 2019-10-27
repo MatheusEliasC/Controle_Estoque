@@ -139,7 +139,7 @@ public:
         return atual;
     }
 
-    ~ArvBin(){
+    virtual ~ArvBin(){
         while(Remove(raiz->valor));
     };
 };
