@@ -34,16 +34,31 @@ int main() {
 //    cout << "║  INSERIR PRODUTO  - REMOVER PRODUTO  n3 - LISTAR PRODUTOSn4 - BUSCAR PRODUTO5 - SAIR"<< endl;                                                                     ║" << std::endl;
 //    cout << "║                                                                       ║ " << endl;
 //    cout << "╚═══════════════════════════════════════════════════════════════════════╝" << endl;
-    int opc;
+    int opc = 0;
     Estoque e(100);
 
     do{
+        bool tenteOpc = false;
         menuCrud();
         cout << "Digite uma opcao: "<<endl;
         cin >> opc;
 
+        //Validando a entrada do usuário.
+        while(true)
+        {
+            if(cin.fail()){
+              cin.clear();
+              cin.ignore(numeric_limits<streamsize>::max(),'\n');
+              cout<<"Entre com uma opção válida: "<<endl;
+              cin>>opc;
+            }
+            if(!cin.fail()){
+                break;
+            }
+        }
 
         switch(opc){
+
             case 1://Inserir
                 e.InserirProduto();
                 break;
@@ -100,5 +115,6 @@ int main() {
 
     }while(opc != 5);
 
+    //delete e[];
     return 0;
 }

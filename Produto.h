@@ -15,11 +15,28 @@ using namespace std;
 class Produto{
 private:
     string nome;
+
     int quantidade;
     double preco;
     int tamanho;
     int id;
     struct tm *data;
+
+    void setPreco(double preco) {
+        Produto::preco = preco;
+    }
+
+    void setTamanho(int tamanho) {
+        Produto::tamanho = tamanho;
+    }
+
+    void setId(int id) {
+        Produto::id = id;
+    }
+
+    void setNome(string nome){
+        this->nome = nome;
+    }
 
     int gerarId(){
         int r;
@@ -28,6 +45,7 @@ private:
         return r;
     }
 
+    friend class Estoque;
     //getters and setters
 public:
     Produto(){/*id = gerarId();*/}
@@ -59,12 +77,21 @@ public:
     }
 
 
+
     std::string getNome(){
         return nome;
     }
 
     struct tm* getData(){
         return data;
+    }
+
+    void setDados(string nome, int quantidade, double preco, int tamanho){
+        setNome(nome);
+        setQuantidade(quantidade);
+        setPreco(preco);
+        setTamanho(tamanho);
+        setId(gerarId());
     }
 
     int getId() const {

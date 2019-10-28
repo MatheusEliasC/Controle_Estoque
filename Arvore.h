@@ -32,6 +32,7 @@ private:
             x=x->esq;
         return x;
     };
+    friend class Estoque;
 
 public:
     ArvBin(){
@@ -138,6 +139,7 @@ public:
         }
         return atual;
     }
+
 
     virtual ~ArvBin(){
         while(Remove(raiz->valor));

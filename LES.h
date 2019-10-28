@@ -31,7 +31,7 @@ public:
 
     void ImprimeNome(){
         for(int i=0;i<n;i++){
-            cout << i+1<<"- " << v[i].getNome() << " "<<endl;
+            cout << i+1 <<"- " << v[i].getNome() << " "<<endl;
         }
     }
 
@@ -50,8 +50,10 @@ public:
         if(n == tamanhoMax){
             return false;//Impossível inserir, lista cheia
         }
-        for (i = 0; i < n && v[i].getNome().at(0) < x.getNome().at(0); ++i) {}
-        for(int j = n;j>i;--j){
+        for (i = 0; i < n && v[i].getNome().at(0) < x.getNome().at(0); ++i) {
+            for(int j = 0; j < n && v[i].getNome().at(1) < x.getNome().at(1); ++j){ }
+        }
+        for(int j = n;j>i; --j){
             v[j] = v[j-1];
         }
         //TODO criar loop para testar e corrigir ordem de nomes que tem a mesma inicial
@@ -60,7 +62,7 @@ public:
         n++;
     }
 
-    bool ReInsere(T x,int pos){
+    bool ReInsere(T x, int pos){
         int i;
         if(pos > n-1){
             return false;//Impossível inserir, posição maior que limite
@@ -104,6 +106,8 @@ public:
     void Substituir(T prod, int pos){
         v[pos] = prod;
     }
+
+
 
     const T&operator[](int idx){}
 

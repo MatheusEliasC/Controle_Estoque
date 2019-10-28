@@ -156,7 +156,7 @@ public:
 
     bool BuscarProduto(int id){
         ArvBin<int> arv;
-        if(l.getN()==0){
+        if(l.getN() == 0){
             cout << "Erro ao inserir produtos na árvore!" << endl;
             return false;
         }
@@ -192,6 +192,10 @@ public:
     };
 
     void RemoverProduto(){
+        if(l.getN() <= 0){
+            cout << "Erro ao remover produto! Estoque vazio!" << endl;
+            return;
+        }
         int pos, quantRemover;
         cout << "Escolha o produto: "<<endl;
         l.ImprimeTudo();
@@ -201,10 +205,11 @@ public:
             cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
             return;
         }
-        cout << l.BuscaPorPos(pos-1).getNome()<< endl;
+        cout << l.BuscaPorPos(pos-1).getNome() << endl;
         int quantidade = l.BuscaPorPos(pos-1).getQuantidade();
         bool tenteQuant;
         do {
+
             tenteQuant = false;
             cout << "O produto na posição " << pos << " contém " << quantidade << " de produtos." << endl;
             cout << "Digite a quantidade desse tipo de produto que você deseja remover. Ou '0' para cancelar." << endl;
@@ -271,7 +276,6 @@ public:
             cout << "Nenhum produto encontrado! Voltando ao menu..."<<endl;
             return;
         }
-
         l.ImprimeNome();
     };
 
