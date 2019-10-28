@@ -20,9 +20,9 @@ using namespace std;
 
 class Estoque{
 private:
-    int capacidadeMax;
+    int capacidadeMax{};
     LES<Produto> l;
-    int quantidadeAtual;
+    int quantidadeAtual{};
 
 
 public:
@@ -33,10 +33,36 @@ public:
         quantidadeAtual = 0;
     }
 
-    string getValor(int valor){
-        string valorStr = to_string(valor);
+    static string getValor(double valor){
+        ostringstream strs;
+        strs << valor;
+        string valorStr = strs.str();
+        cout << valorStr << endl;
         replace( valorStr.begin(), valorStr.end(), '.', ',');
         return valorStr;
+    }
+
+    static Produto* bubble_sortPreco (Produto* vet, int max) {
+        int flag;
+
+        do {
+            flag = 0;
+            for (int i = 0; i < (max - 1); i++) {
+
+                /* Verfica se o vetor está em ordem, no caso ele coloca em ordem crescente, para decrescente trocar '>' por '<' */
+                if (vet[i].getPreco() > vet[i + 1].getPreco()) {
+                    /* Caso não esteja, ordena */
+                    Produto aux = vet[i];
+                    vet[i] = vet[i + 1];
+                    vet[i + 1] = aux;
+                    flag = 1;
+                }
+            }
+            /* Repete enquanto algum valor estiver fora de ordem */
+        } while (flag == 1);
+
+        Produto *v = vet;
+        return v;
     }
 
     bool InserirProduto() {
@@ -113,6 +139,7 @@ public:
             cout << "Informações do produto inserido: " << endl << endl
                  << "Nome: " << novo.getNome() << endl
                  << "Preco: R$ " << novo.getPreco() << endl
+                 << "Preco: R$ " << getValor(novo.getPreco()) << endl
                  << "Quantidade: " << novo.getQuantidade() << endl
                  << "Tamanho: " << novo.getTamanho() << endl
                  << "Id: " << novo.getId() << endl;
@@ -213,7 +240,28 @@ public:
     };
 
     void ListarPreco(){
-        //TODO Aplicar FILA
+        Produto *temp = nullptr;
+        for(int i = 0;i<l.getN();i++){
+            temp[i]= l.BuscaPorPos(i);
+        }
+        Produto* v = bubble_sortPreco(temp,l.getN());
+        Fila<Produto> fila(l.getN());
+        for(int i = 0;i<l.getN();i++){
+            fila.Enfileira(v[i]);
+        }
+        Produto* vetor = fila.Imprime();
+        for(int i=0;i<l.getN();i++){
+            cout << "Preço do produto: " << vetor[i].getPreco()
+                 << "Nome do produto: " << vetor[i].getNome()
+                 << "Quantidade de produto: " << vetor[i].getQuantidade()
+                 << "Tamanho do produto: " << vetor[i].getTamanho()
+                 << "ID do produto: " << vetor [i].getId()
+                 << "Data de entrada no sistema: " << vetor[i].getData();
+        }
+        for(int i = 0;i<l.getN();i++){
+            fila.Desenfileira();
+        }
+        //TODO Arrumar função
         cout << "Falta FILA!" << endl;
     };
 

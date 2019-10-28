@@ -12,7 +12,7 @@ class IFila{
 public:
     virtual bool Enfileira(T valor) = 0;
     virtual T Desenfileira(bool* ok) = 0;
-    virtual void Imprime() = 0;
+    virtual T* Imprime() = 0;
     virtual ~IFila(){};
 };
 
@@ -59,14 +59,8 @@ public:
 
     }
 
-    void Imprime(){
-
-        int j;
-
-        for(j = i; j!=f; j = (j+1) % max){
-            cout << v[j] << " ";
-        }
-        cout << endl;
+    T* Imprime(){
+        return v;
     }
 
 };
