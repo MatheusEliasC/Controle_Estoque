@@ -28,7 +28,7 @@ void menuListar(){\
 };
 
 int main() {
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"UTF-8");
     cout << "================> Controle de Estoque <==============" << endl;
 //    cout << "╔═══════════════════════════════════════════════════════════════════════╗" << endl;
 //    cout << "║  INSERIR PRODUTO  - REMOVER PRODUTO  n3 - LISTAR PRODUTOSn4 - BUSCAR PRODUTO5 - SAIR"<< endl;                                                                     ║" << std::endl;

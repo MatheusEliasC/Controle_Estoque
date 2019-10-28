@@ -6,6 +6,7 @@
 #include "Fila.h"
 #include "LES.h"
 #include "Arvore.h"
+#include "Pilha.h"
 #include <sstream>
 #include <cstdio>
 #include <string>
@@ -20,16 +21,18 @@ using namespace std;
 
 class Estoque{
 private:
-    int capacidadeMax{};
+    int capacidadeMax;
     LES<Produto> l;
-    Pilha<string> p;
-    int quantidadeAtual{};
+    Pilha<Produto> p;
+    int quantidadeAtual;
 
 
 public:
     explicit Estoque(){ }
     explicit Estoque(int Max){
         l.setTamanhoMax(Max);
+        //Pilha<Produto> p(Max);
+        p.setTamanhoMax(Max);
         capacidadeMax = Max;
         quantidadeAtual = 0;
     }
@@ -139,7 +142,6 @@ public:
             //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
             cout << "Informações do produto inserido: " << endl << endl
                  << "Nome: " << novo.getNome() << endl
-                 << "Preco: R$ " << novo.getPreco() << endl
                  << "Preco: R$ " << getValor(novo.getPreco()) << endl
                  << "Quantidade: " << novo.getQuantidade() << endl
                  << "Tamanho: " << novo.getTamanho() << endl
@@ -281,6 +283,14 @@ public:
     };
 
     void ListarData(){
+        for(int i = 0; i < l.getN(); i++){
+            p.Empilha(l.BuscaPorPos(i));
+        }
+        bool ok;
+        int i = 0;
+        while(i < p.getMax()){
+            p.Desempilha(&ok).imprimeData();
+        }
 
         //TODO Aplicar Pilha
         cout << "Falta Pilha!" << endl;

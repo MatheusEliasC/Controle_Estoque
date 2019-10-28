@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string.h>
 #include <cstdlib>
+#include <cstdio>
 
 #ifndef STOCKCONTROL_PRODUTO_H
 #define STOCKCONTROL_PRODUTO_H
@@ -77,7 +78,12 @@ public:
     }
 
 
-
+    void imprimeData(){
+        cout << "Data de inserção dos produtos: " << endl;
+        char buffer[80];
+        strftime(buffer, 80, "Data da inserção: %d/%m/%y", getData());
+        puts(buffer);
+    }
     std::string getNome(){
         return nome;
     }
