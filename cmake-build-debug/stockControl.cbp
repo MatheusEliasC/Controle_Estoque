@@ -92,6 +92,9 @@
 		<Unit filename="/cygdrive/c/Users/renan/CLionProjects/Controle_Estoque/LES.h">
 			<Option target="stockControl"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/renan/CLionProjects/Controle_Estoque/Pilha.h">
+			<Option target="stockControl"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/renan/CLionProjects/Controle_Estoque/Produto.h">
 			<Option target="stockControl"/>
 		</Unit>

@@ -22,6 +22,7 @@ class Estoque{
 private:
     int capacidadeMax{};
     LES<Produto> l;
+    Pilha<string> p;
     int quantidadeAtual{};
 
 
@@ -280,6 +281,7 @@ public:
     };
 
     void ListarData(){
+
         //TODO Aplicar Pilha
         cout << "Falta Pilha!" << endl;
     };
