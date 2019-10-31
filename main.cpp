@@ -8,32 +8,39 @@
 using namespace std;
 
 void menuCrud() {
-//    cout << "╔════════════════════════════════════════════════════════════════╗" << std::endl;
-//    cout << "║     INSERIR PRODUTO                                                   ║" << std::endl;
-//    cout << "║     REMOVER PRODUTO                                                   ║" << std::endl;
-//    cout << "║     LISTAR PRODUTOS                                                   ║ " << std::endl;
-//    cout << "║     BUSCAR PRODUTO                                                    ║" << std::endl;
-//    cout << "║     SAIR                                                              ║ " << std::endl;
-//    cout << "║                                                                       ║" << std::endl;
-//    cout << "║                                                                       ║ " << std::endl;
-//    cout << "║                                                                       ║ " << std::endl;
-//    cout << "╚═══════════════════════════════════════════════════════════════════════╝" << std::endl;
-//TODO ARRUMAR SÍMBOLOS DE CAIXA, ESTES ESTÃO COM ERRO NA IMPRESSÃO!
-    cout << "1- INSERIR PRODUTO \n2- REMOVER PRODUTO \n3- LISTAR PRODUTOS \n4- BUSCAR PRODUTO5 \n5- SAIR"<< endl;
+//    cout << "?????????????????????????????????????????????????????????????????????????" << std::endl;
+//    cout << "?     INSERIR PRODUTO                                                   ?" << std::endl;
+//    cout << "?     REMOVER PRODUTO                                                   ?" << std::endl;
+//    cout << "?     LISTAR PRODUTOS                                                   ? " << std::endl;
+//    cout << "?     BUSCAR PRODUTO                                                    ?" << std::endl;
+//    cout << "?     SAIR                                                              ? " << std::endl;
+//    cout << "?                                                                       ?" << std::endl;
+//    cout << "?                                                                       ? " << std::endl;
+//    cout << "?                                                                       ? " << std::endl;
+//    cout << "?????????????????????????????????????????????????????????????????????????" << std::endl;
+//TODO ARRUMAR S?MBOLOS DE CAIXA, ESTES EST?O COM ERRO NA IMPRESS?O!
+    cout << "+.......................................................................+" << std::endl;
+    cout << "|                         1- INSERIR PRODUTO                            |"<< endl;
+    cout << "|                         2- REMOVER PRODUTO                            |"<< endl;
+    cout << "|                         3- LISTAR PRODUTOS                            |"<< endl;
+    cout << "|                         4- BUSCAR PRODUTO5                            |"<< endl;
+    cout << "|                                                                       |"<< endl;
+    cout << "|                               5- SAIR                                 |"<< endl;
+    cout << "+.......................................................................+" << std::endl;
 };
 
 void menuListar(){\
-    cout<< "\n/OPÇÕES DE LISTA:"<<endl;
+    cout<< "\n/OP??ES DE LISTA:"<<endl;
     cout<< "\n1 - POR TAMANHO\n2 - POR PRECO\n3 - POR NOME\n4 - POR DATA\n5 - VOLTAR\n";
 };
 
 int main() {
-    setlocale(LC_ALL,"UTF-8");
-    cout << "================> Controle de Estoque <==============" << endl;
-//    cout << "╔═══════════════════════════════════════════════════════════════════════╗" << endl;
-//    cout << "║  INSERIR PRODUTO  - REMOVER PRODUTO  n3 - LISTAR PRODUTOSn4 - BUSCAR PRODUTO5 - SAIR"<< endl;                                                                     ║" << std::endl;
-//    cout << "║                                                                       ║ " << endl;
-//    cout << "╚═══════════════════════════════════════════════════════════════════════╝" << endl;
+    setlocale(LC_ALL,"ascii");
+    cout <<   "================} Controle de Estoque {==============" << endl;
+//    cout << "?????????????????????????????????????????????????????????????????????????" << endl;
+//    cout << "?  INSERIR PRODUTO  - REMOVER PRODUTO  n3 - LISTAR PRODUTOSn4 - BUSCAR PRODUTO5 - SAIR"<< endl;                                                                     ?" << std::endl;
+//    cout << "?                                                                       ? " << endl;
+//    cout << "?????????????????????????????????????????????????????????????????????????" << endl;
     int opc = 0;
     Estoque e(100);
 
@@ -43,14 +50,14 @@ int main() {
         cout << "Digite uma opcao: "<<endl;
         cin >> opc;
 
-        //Validando a entrada do usuário.
+        //Validando a entrada do usu?rio.
         while(true)
         {
             if(cin.fail()){
-              cin.clear();
-              cin.ignore(numeric_limits<streamsize>::max(),'\n');
-              cout<<"Entre com uma opção válida: "<<endl;
-              cin>>opc;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout<<"Entre com uma op??o v?lida: "<<endl;
+                cin>>opc;
             }
             if(!cin.fail()){
                 break;
@@ -88,12 +95,12 @@ int main() {
                         cout<< "Voltando ao menu!" << endl;
                         break;
                     default:
-                        cout <<"Opção não encontrada, tente novamente"<<endl;
+                        cout <<"Op??o n?o encontrada, tente novamente"<<endl;
                 }
                 break;
 
             case 4: //Buscar
-                cout << "Digite o id do produto que está buscando. Digite 0 para voltar." << endl;
+                cout << "Digite o id do produto que est? buscando. Digite 0 para voltar." << endl;
                 int buscar;
                 cin >> buscar;
                 if(buscar == 0){
@@ -106,11 +113,11 @@ int main() {
                 break;
 
             case 5: //Sair
-                cout << "Até mais!" << endl;
+                cout << "At? mais!" << endl;
                 break;
 
             default:
-                cout << "Opção não encontrada, tente novamente!" << endl;
+                cout << "Op??o n?o encontrada, tente novamente!" << endl;
         }
 
     }while(opc != 5);
