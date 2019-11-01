@@ -41,7 +41,6 @@ public:
         ostringstream strs;
         strs << valor;
         string valorStr = strs.str();
-        cout << valorStr << endl;
         replace( valorStr.begin(), valorStr.end(), '.', ',');
         return valorStr;
     }
@@ -118,8 +117,8 @@ public:
             cout << "Digite o preço equivalente a um produto: " << endl;
             cin >> precoString;
             replace( precoString.begin(), precoString.end(), ',', '.');
-            stringstream(precoString)>>preco;
-            if (preco < 0.00 || preco >= 1500.00) {
+            stringstream(precoString) >> preco;
+            if (preco <= 0.00 || preco >= 1500.00) {
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
             }
@@ -208,7 +207,7 @@ public:
             cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
             return;
         }
-        cout << l.BuscaPorPos(pos-1).getNome() << endl;
+        cout << "Produto selecionado: " << l.BuscaPorPos(pos-1).getNome() << endl;
         int quantidade = l.BuscaPorPos(pos-1).getQuantidade();
         bool tenteQuant;
         do {
@@ -223,8 +222,6 @@ public:
             } else if (quantRemover < quantidade) {
                 Produto novo(l.BuscaPorPos(pos-1).getNome(),quantidade-quantRemover,l.BuscaPorPos(pos-1).getPreco(),l.BuscaPorPos(pos-1).getTamanho());
                 if(l.ReInsere(novo,pos-1))
-                    cout<<"entrou"<<endl;
-                l.ImprimeTudo();
                 cout << "Quantidade de produtos reajustada... Quantidade atual para o produto "
                      << l.BuscaPorPos(pos - 1).getNome()
                      << " é igual a: " << l.BuscaPorPos(pos - 1).getQuantidade() << endl;
@@ -239,7 +236,6 @@ public:
                 tenteQuant = true;
             }
         }while(tenteQuant);
-        //TODO ARRUMAR SISTEMA DE REMOVER QUANTIDADE, ELE APARECE QUE REMOVE MAS NÃO REMOVE
     };
 
     void ListarTamanho(){
@@ -274,7 +270,6 @@ public:
     };
 
     void ListarNome(){
-        //TODO ORDEM ALFABÉTICA
         if(l.getN()<=0){
             cout << "Nenhum produto encontrado! Voltando ao menu..."<<endl;
             return;
