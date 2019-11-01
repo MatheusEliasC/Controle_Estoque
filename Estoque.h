@@ -7,12 +7,11 @@
 #include "LES.h"
 #include "Arvore.h"
 #include "Pilha.h"
+#include "LDE.h"
 #include <sstream>
 #include <cstdio>
 #include <string>
 #include <algorithm>
-
-
 
 #ifndef STOCKCONTROL_ESTOQUE_H
 #define STOCKCONTROL_ESTOQUE_H
@@ -23,7 +22,8 @@ class Estoque{
 private:
     int capacidadeMax;
     LES<Produto> l;
-    Pilha<Produto> p;
+    //LDE<int> ld;
+    Pilha<struct tm*> p;
     int quantidadeAtual;
 
 
@@ -41,6 +41,7 @@ public:
         ostringstream strs;
         strs << valor;
         string valorStr = strs.str();
+        cout << valorStr << endl;
         replace( valorStr.begin(), valorStr.end(), '.', ',');
         return valorStr;
     }
@@ -118,7 +119,7 @@ public:
             cin >> precoString;
             replace( precoString.begin(), precoString.end(), ',', '.');
             stringstream(precoString) >> preco;
-            if (preco <= 0.00 || preco >= 1500.00) {
+            if (preco <= 0.00 || preco >= 2500.00) {
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
             }
@@ -126,7 +127,7 @@ public:
         //No escopo deste 'do', recebemos, desta vez, o preço referente a uma unidade do produto,
         // caso este não seja válido um loop se inicia até que um novo valor seja válido.
         //Este novo valor é uma escolha do usuário como o primeiro.
-        Produto novo(nomeStr, quantidade, preco, tamanho);
+        //Produto novo(nomeStr, quantidade, preco, tamanho);
         //l().Insere(novo) retorna false quando a lista estiver cheia ou seja quando o número de elementos da lista for igual a capacidade maxima que foi passado pelo construtor.
 
         quantidadeAtual += quantidade; //Incrementa a quantidade atual de acordo com a quantidade de produtos inserida.
@@ -136,6 +137,10 @@ public:
             return false;
         }
 
+        Produto novo(nomeStr, quantidade, preco, tamanho);
+        //l.Insere(novo);
+        p.Empilha(novo.getData());
+        //ld.Insere(novo.getTamanho());
         if (l.Insere(novo)){
             cout << endl << "Produto adicionado com sucesso!" << endl;
             //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
@@ -239,6 +244,9 @@ public:
     };
 
     void ListarTamanho(){
+//        for(int i = 0; i < l.getN(); i++){
+//            cout << "Nome do produto: " <<  l.BuscaPorPos(i).getNome() << "Tamanho: " <<  ld.Busca(l.BuscaPorPos(i).getTamanho());
+//        }
         //TODO Aplicar LDE
         cout << "Falta LDE!" << endl;
     };
@@ -278,17 +286,18 @@ public:
     };
 
     void ListarData(){
-        for(int i = 0; i < l.getN(); i++){
-            p.Empilha(l.BuscaPorPos(i));
-        }
         bool ok;
-        int i = 0;
-        while(i < p.getMax()){
-            p.Desempilha(&ok).imprimeData();
+        //cout << "Tamanho da Pilha: " << p.getN() << endl;
+        char buffer[80];
+        for(int i = 0; i < p.getN(); i++){
+            strftime(buffer, 80, "Data da inserção: %d/%m/%y", p.Desempilha(&ok));
+            puts(buffer);
         }
-
+//        for(int i = 0; i < l.getN(); i++){
+//            p.Empilha(l.BuscaPorPos(i));
+//        }
         //TODO Aplicar Pilha
-        cout << "Falta Pilha!" << endl;
+        //cout << "Falta Pilha!" << endl;
     };
 };
 

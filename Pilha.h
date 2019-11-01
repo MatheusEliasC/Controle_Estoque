@@ -42,7 +42,7 @@ public:
         if(n == Max)
             return true;
 
-        v[n] = valor;
+        v[n-1] = valor;
         n++;
     }
 
@@ -117,6 +117,10 @@ public:
 
     int getMax(){
         return Max;
+    }
+
+    int getN(){
+        return n;
     }
 };
 
