@@ -16,7 +16,6 @@ using namespace std;
 class Produto{
 private:
     string nome;
-
     int quantidade;
     double preco;
     int tamanho;
@@ -51,7 +50,7 @@ private:
 public:
     Produto(){/*id = gerarId();*/}
 
-    Produto(string nome, int quantidade,double preco, int tamanho){
+    Produto(string nome, int quantidade, double preco, int tamanho){
         this->nome = nome;
         this->quantidade = quantidade;
         this->preco = preco;
@@ -77,9 +76,8 @@ public:
         return tamanho;
     }
 
-
     void imprimeData(){
-        cout << "Data de inserção dos produtos: " << endl;
+        cout << "Lista de produtos" << endl;
         char buffer[80];
         strftime(buffer, 80, "Data da inserção: %d/%m/%y", getData());
         puts(buffer);
@@ -92,13 +90,13 @@ public:
         return data;
     }
 
-    void setDados(string nome, int quantidade, double preco, int tamanho){
-        setNome(nome);
-        setQuantidade(quantidade);
-        setPreco(preco);
-        setTamanho(tamanho);
-        setId(gerarId());
-    }
+//    void setDados(string nome, int quantidade, double preco, int tamanho){
+//        setNome(nome);
+//        setQuantidade(quantidade);
+//        setPreco(preco);
+//        setTamanho(tamanho);
+//        setId(gerarId());
+//    }
 
     int getId() const {
         return id;
