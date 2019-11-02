@@ -118,8 +118,8 @@ public:
             cout << "Digite o preço equivalente a um produto: " << endl;
             cin >> precoString;
             replace( precoString.begin(), precoString.end(), ',', '.');
-            stringstream(precoString)>>preco;
-            if (preco < 0.00 || preco >= 2500.00) {
+            stringstream(precoString) >> preco;
+            if (preco <= 0.00 || preco >= 2500.00) {
                 tentePreco = true;
                 cout << "Preço inválido, tente novamente." << endl;
             }
@@ -129,7 +129,7 @@ public:
         //Este novo valor é uma escolha do usuário como o primeiro.
         //Produto novo(nomeStr, quantidade, preco, tamanho);
         //l().Insere(novo) retorna false quando a lista estiver cheia ou seja quando o número de elementos da lista for igual a capacidade maxima que foi passado pelo construtor.
-        //p.Empilha(novo);
+
         quantidadeAtual += quantidade; //Incrementa a quantidade atual de acordo com a quantidade de produtos inserida.
         //O estoque estará cheio quando a quantidadeAtual for maior ou igual a capacidade máxima.
         if (quantidadeAtual >= capacidadeMax) {
@@ -154,7 +154,6 @@ public:
            // puts(buffer);
             return true;
         }
-//
         else {
             cout << "Erro ao inserir produto na LES!" << endl;
             return false;
@@ -215,7 +214,7 @@ public:
             cout << "Operação cancelada pelo usuário. Voltando ao menu..." << endl;
             return;
         }
-        cout << l.BuscaPorPos(pos-1).getNome() << endl;
+        cout << "Produto selecionado: " << l.BuscaPorPos(pos-1).getNome() << endl;
         int quantidade = l.BuscaPorPos(pos-1).getQuantidade();
         bool tenteQuant;
         do {
@@ -230,8 +229,6 @@ public:
             } else if (quantRemover < quantidade) {
                 Produto novo(l.BuscaPorPos(pos-1).getNome(),quantidade-quantRemover,l.BuscaPorPos(pos-1).getPreco(),l.BuscaPorPos(pos-1).getTamanho());
                 if(l.ReInsere(novo,pos-1))
-                    cout<<"entrou"<<endl;
-                l.ImprimeTudo();
                 cout << "Quantidade de produtos reajustada... Quantidade atual para o produto "
                      << l.BuscaPorPos(pos - 1).getNome()
                      << " é igual a: " << l.BuscaPorPos(pos - 1).getQuantidade() << endl;
@@ -246,7 +243,6 @@ public:
                 tenteQuant = true;
             }
         }while(tenteQuant);
-        //TODO ARRUMAR SISTEMA DE REMOVER QUANTIDADE, ELE APARECE QUE REMOVE MAS NÃO REMOVE
     };
 
     void ListarTamanho(){
@@ -285,7 +281,6 @@ public:
     };
 
     void ListarNome(){
-        //TODO ORDEM ALFABÉTICA
         if(l.getN()<=0){
             cout << "Nenhum produto encontrado! Voltando ao menu..."<<endl;
             return;
