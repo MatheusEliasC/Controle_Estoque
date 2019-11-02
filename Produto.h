@@ -20,7 +20,7 @@ private:
     double preco;
     int tamanho;
     int id;
-    struct tm *data;
+    struct tm data;
 
     void setPreco(double preco) {
         Produto::preco = preco;
@@ -58,9 +58,9 @@ public:
         //Id
         id = gerarId();
         //Data
-        time_t agr;
+        time_t agr = time(0);
         time(&agr);
-        data = localtime(&agr);
+        data = *localtime(&agr);
 
     }
 
@@ -76,27 +76,13 @@ public:
         return tamanho;
     }
 
-    void imprimeData(){
-        cout << "Lista de produtos" << endl;
-        char buffer[80];
-        strftime(buffer, 80, "Data da inserção: %d/%m/%y", getData());
-        puts(buffer);
-    }
     std::string getNome(){
         return nome;
     }
 
-    struct tm* getData(){
+    struct tm getData(){
         return data;
     }
-
-//    void setDados(string nome, int quantidade, double preco, int tamanho){
-//        setNome(nome);
-//        setQuantidade(quantidade);
-//        setPreco(preco);
-//        setTamanho(tamanho);
-//        setId(gerarId());
-//    }
 
     int getId() const {
         return id;
@@ -104,6 +90,16 @@ public:
 
     void setQuantidade(int quantidade) {
         this->quantidade = quantidade;
+    }
+    const string dataHoraAtual() {
+//        time_t     now = time(0);
+//        struct tm  tstruct;
+        char buf[80];
+//        tstruct = *localtime(&now);
+        // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+        // for more information about date/time format
+        strftime(buf, sizeof(buf), "%d-%m-%Y.%X", &data);
+        return buf;
     }
 
 };

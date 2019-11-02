@@ -42,7 +42,7 @@ public:
         if(n == Max)
             return true;
 
-        v[n-1] = valor;
+        v[n] = valor;
         n++;
     }
 

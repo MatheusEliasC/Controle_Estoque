@@ -23,7 +23,8 @@ private:
     int capacidadeMax;
     LES<Produto> l;
     //LDE<int> ld;
-    Pilha<struct tm*> p;
+    //Pilha<struct tm*> p;
+    //Fila<>
     int quantidadeAtual;
 
 
@@ -32,7 +33,7 @@ public:
     explicit Estoque(int Max){
         l.setTamanhoMax(Max);
         //Pilha<Produto> p(Max);
-        p.setTamanhoMax(Max);
+
         capacidadeMax = Max;
         quantidadeAtual = 0;
     }
@@ -71,8 +72,7 @@ public:
 
     bool InserirProduto() {
 
-        char buffer[80];
-        char nomeChar[100];
+        //char buffer[80];
         string nomeStr, quantidadeStr, tamanhoStr;
         int quantidade = 0, tamanho = 0;
         string precoString;
@@ -139,7 +139,7 @@ public:
 
         Produto novo(nomeStr, quantidade, preco, tamanho);
         //l.Insere(novo);
-        p.Empilha(novo.getData());
+        //p.Empilha(novo.getData());
         //ld.Insere(novo.getTamanho());
         if (l.Insere(novo)){
             cout << endl << "Produto adicionado com sucesso!" << endl;
@@ -150,8 +150,8 @@ public:
                  << "Quantidade: " << novo.getQuantidade() << endl
                  << "Tamanho: " << novo.getTamanho() << endl
                  << "Id: " << novo.getId() << endl;
-            strftime(buffer, 80, "Data da inserção: %d/%m/%y", novo.getData());
-            puts(buffer);
+//            strftime(buffer, 80, "Data da inserção: %d/%m/%y", novo.getData());
+           // puts(buffer);
             return true;
         }
 //
@@ -168,9 +168,11 @@ public:
             cout << "Erro ao inserir produtos na árvore!" << endl;
             return false;
         }
+
         for(int i=0;i<l.getN();i++){
             arv.Insere(l.BuscaPorPos(i).getId());
         }
+
         if(arv.Busca(id)){
             cout << "O produto foi encontrado." << endl;
             cout << "Deseja ver as informações do produto encontrado? (Sim ou Não)" << endl;
@@ -186,7 +188,7 @@ public:
                      << "Quantidade de produto: " << l.BuscaPorID(id).getQuantidade() << endl
                      << "Tamanho do produto: " << l.BuscaPorID(id).getTamanho() << endl
                      << "Preço do produto: " << l.BuscaPorID(id).getPreco()<< endl
-                     << "Data de entrada no sistema: " << l.BuscaPorID(id).getData()<< endl << endl
+                     /*<< "Data de entrada no sistema: " << l.BuscaPorID(id).getData()<< endl << endl*/
                      << "Voltando ao menu..." << endl;
             }
             else{
@@ -256,27 +258,28 @@ public:
     };
 
     void ListarPreco(){
-        Produto *temp = nullptr;
-        for(int i = 0;i<l.getN();i++){
-            temp[i]= l.BuscaPorPos(i);
-        }
-        Produto* v = bubble_sortPreco(temp,l.getN());
-        Fila<Produto> fila(l.getN());
-        for(int i = 0;i<l.getN();i++){
-            fila.Enfileira(v[i]);
-        }
-        Produto* vetor = fila.Imprime();
-        for(int i=0;i<l.getN();i++){
-            cout << "Preço do produto: " << vetor[i].getPreco()
-                 << "Nome do produto: " << vetor[i].getNome()
-                 << "Quantidade de produto: " << vetor[i].getQuantidade()
-                 << "Tamanho do produto: " << vetor[i].getTamanho()
-                 << "ID do produto: " << vetor [i].getId()
-                 << "Data de entrada no sistema: " << vetor[i].getData();
-        }
-        for(int i = 0;i<l.getN();i++){
-            fila.Desenfileira();
-        }
+//        Produto *temp = nullptr;
+//        for(int i = 0;i<l.getN();i++){
+//            temp[i]= l.BuscaPorPos(i);
+//        }
+//        Produto* v = bubble_sortPreco(temp,l.getN());
+//        Fila<Produto> fila(l.getN());
+//        for(int i = 0;i<l.getN();i++){
+//            fila.Enfileira(v[i]);
+//        }
+//        Produto* vetor = fila.Imprime();
+//        for(int i=0;i<l.getN();i++){
+//            cout << "Preço do produto: " << vetor[i].getPreco()
+//                 << "Nome do produto: " << vetor[i].getNome()
+//                 << "Quantidade de produto: " << vetor[i].getQuantidade()
+//                 << "Tamanho do produto: " << vetor[i].getTamanho()
+//                 << "ID do produto: " << vetor [i].getId()
+//                 << "Data de entrada no sistema: " << vetor[i].getData();
+//        }
+//        for(int i = 0;i<l.getN();i++){
+//            fila.Desenfileira();
+//        }
+
         //TODO Arrumar função
         cout << "Falta FILA!" << endl;
     };
@@ -291,18 +294,17 @@ public:
     };
 
     void ListarData(){
+        Pilha<string> p(l.getN());
+
         bool ok;
-        //cout << "Tamanho da Pilha: " << p.getN() << endl;
-        char buffer[80];
-        for(int i = 0; i < p.getN(); i++){
-            strftime(buffer, 80, "Data da inserção: %d/%m/%y", p.Desempilha(&ok));
-            puts(buffer);
+
+        cout << "Lista de produtos (por data): " << endl;
+        for(int i = 0; i < l.getN(); i++){
+            p.Empilha(l.BuscaPorPos(i).dataHoraAtual());
+            cout <<"Produto "<< i+1 << ": "<<  l.BuscaPorPos(i).getNome() << " | Data: "<< p.Desempilha(&ok) << endl;
         }
-//        for(int i = 0; i < l.getN(); i++){
-//            p.Empilha(l.BuscaPorPos(i));
-//        }
-        //TODO Aplicar Pilha
-        //cout << "Falta Pilha!" << endl;
+
+        return;
     };
 };
 
