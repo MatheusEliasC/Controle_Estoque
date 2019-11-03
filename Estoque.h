@@ -119,7 +119,7 @@ public:
 
         do {
             tenteTamanho = false;
-            cout << "Digite o tamanho do(s) produto(s) (1-Pequeno 2-Médio 3-Grande): " << endl;
+            cout << "Digite o tamanho do(s) produto(s) (1-Pequeno 2-Médio 3-Grande): ";
             cin >> tamanhoStr;
             stringstream(tamanhoStr) >> tamanho;
             tamanho--;
@@ -133,7 +133,7 @@ public:
 
         do {
             tentePreco = false;
-            cout << "Digite o preço equivalente a um produto: " << endl;
+            cout << "Digite o preço equivalente a um produto: ";
             cin >> precoString;
             replace( precoString.begin(), precoString.end(), ',', '.');
             stringstream(precoString) >> preco;
@@ -279,34 +279,33 @@ public:
         for(int i = 0; i< l.getN(); i++){
             ld.Remove(i);
         }
+        //TODO revisar bug de crash do código
         cout << "Voltando ao menu!" << endl;
     };
 
     void ListarPreco(){
-//        Produto *temp = nullptr;
-//        for(int i = 0;i<l.getN();i++){
-//            temp[i]= l.BuscaPorPos(i);
-//        }
-//        Produto* v = bubble_sortPreco(temp,l.getN());
-//        Fila<Produto> fila(l.getN());
-//        for(int i = 0;i<l.getN();i++){
-//            fila.Enfileira(v[i]);
-//        }
-//        Produto* vetor = fila.Imprime();
-//        for(int i=0;i<l.getN();i++){
-//            cout << "Preço do produto: " << vetor[i].getPreco()
-//                 << "Nome do produto: " << vetor[i].getNome()
-//                 << "Quantidade de produto: " << vetor[i].getQuantidade()
-//                 << "Tamanho do produto: " << vetor[i].getTamanho()
-//                 << "ID do produto: " << vetor [i].getId()
-//                 << "Data de entrada no sistema: " << vetor[i].getData();
-//        }
-//        for(int i = 0;i<l.getN();i++){
-//            fila.Desenfileira();
-//        }
-
-        //TODO Arrumar função
-        cout << "Falta FILA!" << endl;
+        Produto *temp = nullptr;
+        for(int i = 0;i<l.getN();i++){
+            temp[i]= l.BuscaPorPos(i);
+        }
+        Produto* v = bubble_sortPreco(temp,l.getN());
+        Fila<Produto> fila(l.getN());
+        for(int i = 0;i<l.getN();i++){
+            fila.Enfileira(v[i]);
+        }
+        Produto* vetor = fila.Imprime();
+        for(int i=0;i<l.getN();i++){
+            cout << "Preço do produto: " << vetor[i].getPreco()
+                 << "Nome do produto: " << vetor[i].getNome()
+                 << "Quantidade de produto: " << vetor[i].getQuantidade()
+                 << "Tamanho do produto: " << vetor[i].getTamanho()
+                 << "ID do produto: " << vetor [i].getId();
+        }
+        for(int i = 0;i<l.getN();i++){
+            fila.Desenfileira();
+        }
+        //TODO revisar bug de crash do código
+        cout << "Voltando ao menu!" << endl;
     };
 
     void ListarNome(){

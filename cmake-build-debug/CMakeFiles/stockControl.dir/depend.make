@@ -4,6 +4,7 @@
 CMakeFiles/stockControl.dir/main.cpp.o: ../Arvore.h
 CMakeFiles/stockControl.dir/main.cpp.o: ../Estoque.h
 CMakeFiles/stockControl.dir/main.cpp.o: ../Fila.h
+CMakeFiles/stockControl.dir/main.cpp.o: ../LDE.h
 CMakeFiles/stockControl.dir/main.cpp.o: ../LES.h
 CMakeFiles/stockControl.dir/main.cpp.o: ../Pilha.h
 CMakeFiles/stockControl.dir/main.cpp.o: ../Produto.h

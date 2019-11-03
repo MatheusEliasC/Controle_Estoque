@@ -9,7 +9,6 @@ using namespace std;
 
 void menuCrud() {
 
-//TODO ARRUMAR S?MBOLOS DE CAIXA, ESTES EST?O COM ERRO NA IMPRESS?O!
     cout << "+.......................................................................+" << std::endl;
     cout << "|                         1- INSERIR PRODUTO                            |"<< endl;
     cout << "|                         2- REMOVER PRODUTO                            |"<< endl;
@@ -20,7 +19,7 @@ void menuCrud() {
 };
 
 void menuListar(){\
-    cout<< "\nOP??ES DE LISTA:"<<endl;
+    cout<< "\nOPCOES DE LISTA:"<<endl;
     cout<< "\n1 - POR TAMANHO\n2 - POR PRECO\n3 - POR NOME\n4 - POR DATA\n5 - VOLTAR\n";
 };
 
@@ -43,7 +42,7 @@ int main() {
             if(cin.fail()){
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                cout<<"Entre com uma op??o v?lida: "<<endl;
+                cout<<"Entre com uma opcao valida: "<<endl;
                 cin>>opc;
             }
             if(!cin.fail()){
@@ -81,12 +80,12 @@ int main() {
                         cout<< "Voltando ao menu!" << endl;
                         break;
                     default:
-                        cout <<"Op??o n?o encontrada, tente novamente"<<endl;
+                        cout <<"Opcao nao encontrada, tente novamente"<<endl;
                 }
                 break;
 
             case 4: //Buscar
-                cout << "Digite o id do produto que est? buscando. Digite 0 para voltar." << endl;
+                cout << "Digite o id do produto que esta buscando. Digite 0 para voltar." << endl;
                 int buscar;
                 cin >> buscar;
                 if(buscar == 0){
@@ -99,11 +98,11 @@ int main() {
                 break;
 
             case 5: //Sair
-                cout << "At? mais!" << endl;
+                cout << "Ate mais!" << endl;
                 break;
 
             default:
-                cout << "Op??o n?o encontrada, tente novamente!" << endl;
+                cout << "Opcao nao encontrada, tente novamente!" << endl;
         }
     }while(opc != 5);
 

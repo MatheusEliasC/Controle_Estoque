@@ -56,7 +56,6 @@ public:
         for(int j = n;j>i; --j){
             v[j] = v[j-1];
         }
-        //TODO criar loop para testar e corrigir ordem de nomes que tem a mesma inicial
 
         v[i] = x;
         n++;
