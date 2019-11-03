@@ -270,9 +270,11 @@ public:
         //string *nomes = new string[l.getN()];
 
 
+        //LDE<string> ld;
         LDE<string> ld;
         for(int i = 0; i < l.getN(); i++)
-            ld.Insere("Produto " + to_string(i+1) + ": " + l.BuscaPorPos(i).getNome() + " | Tamanho: " + l.verificaTamanho(l.BuscaPorPos(i).getTamanho()));
+            ld.Insere("Produto " + to_string(i+1)+": "  + l.BuscaPorPos(i).getNome()+" | Tamanho: " + l.verificaTamanho(l.BuscaPorPos(i).getTamanho()));
+
 
 //        Produto *temp = nullptr;
 //        for(int i = 0;i<l.getN();i++){
@@ -283,11 +285,16 @@ public:
 //        for(int i = 0; i< l.getN(); i++){
 //            ld.Insere(v[i]);
 //        }
+
         cout << "Listando produtos: " << endl;
+//        for(int i = 0; i < l.getN(); i++)
+//            cout << l.BuscaPorPos(i).getNome() << " " << ld[i]  << endl;
         ld.Imprime();
-        for(int i = 0; i< l.getN(); i++){
-            ld.Remove(i);
-        }
+//        for(int i = 0; i< l.getN(); i++){
+//            ld.Remove(i);
+//        }
+
+
 
         //TODO revisar bug de crash do código
         cout << "Voltando ao menu!" << endl;

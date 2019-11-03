@@ -19,8 +19,14 @@ void menuCrud() {
 };
 
 void menuListar(){\
-    cout<< "\nOPCOES DE LISTA:"<<endl;
-    cout<< "\n1 - POR TAMANHO\n2 - POR PRECO\n3 - POR NOME\n4 - POR DATA\n5 - VOLTAR\n";
+    cout<< "+........................................................................+\n"
+           "|                           OPCOES DE LISTA:                             |\n"
+           "|                            1 - POR TAMANHO                             |\n"
+           "|                            2 - POR PRECO                               |\n"
+           "|                            3 - POR NOME                                |\n"
+           "|                            4 - POR DATA                                |\n"
+           "|                            5 - VOLTAR                                  |\n"
+           "+........................................................................+" << endl;
 };
 
 int main() {
@@ -36,7 +42,7 @@ int main() {
         cout << "Digite uma opcao: "<<endl;
         cin >> opc;
 
-        //Validando a entrada do usu?rio.
+        //Validando a entrada do usuário.
         while(true)
         {
             if(cin.fail()){

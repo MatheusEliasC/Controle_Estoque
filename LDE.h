@@ -111,7 +111,6 @@ public:
             primeiro = atual->prox;
 
         delete atual;
-
         n--;
         return true;
     };
