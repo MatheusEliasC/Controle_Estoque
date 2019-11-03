@@ -177,9 +177,10 @@ public:
     };
 
     bool BuscarProduto(int id){
+
         ArvBin<int> arv;
         if(l.getN() == 0){
-            cout << "Erro ao inserir produtos na árvore!" << endl;
+            cout << "Erro ao inserir produtos na árvore! Nenhum produto encontrado!" << endl;
             return false;
         }
 
@@ -265,25 +266,39 @@ public:
             cout << "Nenhum produto encontrado! Voltando ao menu!" << endl;
             return;
         }
-        Produto *temp = nullptr;
-        for(int i = 0;i<l.getN();i++){
-            temp[i]= l.BuscaPorPos(i);
-        }
-        Produto* v = bubble_sortTamanho(temp,l.getN());
-        LDE<Produto> ld;
-        for(int i = 0; i< l.getN(); i++){
-            ld.Insere(v[i]);
-        }
+
+        //string *nomes = new string[l.getN()];
+
+
+        LDE<string> ld;
+        for(int i = 0; i < l.getN(); i++)
+            ld.Insere("Produto " + to_string(i+1) + ": " + l.BuscaPorPos(i).getNome() + " | Tamanho: " + l.verificaTamanho(l.BuscaPorPos(i).getTamanho()));
+
+//        Produto *temp = nullptr;
+//        for(int i = 0;i<l.getN();i++){
+//            temp[i]= l.BuscaPorPos(i);
+//        }
+//        Produto* v = bubble_sortTamanho(temp,l.getN());
+//        LDE<Produto> ld;
+//        for(int i = 0; i< l.getN(); i++){
+//            ld.Insere(v[i]);
+//        }
         cout << "Listando produtos: " << endl;
         ld.Imprime();
         for(int i = 0; i< l.getN(); i++){
             ld.Remove(i);
         }
+
         //TODO revisar bug de crash do código
         cout << "Voltando ao menu!" << endl;
+
     };
 
     void ListarPreco(){
+        if(l.getN()<=0){
+            cout << "Nenhum produto encontrado! Voltando ao menu..."<<endl;
+            return;
+        }
         Produto *temp = nullptr;
         for(int i = 0;i<l.getN();i++){
             temp[i]= l.BuscaPorPos(i);
@@ -317,6 +332,10 @@ public:
     };
 
     void ListarData(){
+        if(l.getN()<=0){
+            cout << "Nenhum produto encontrado! Voltando ao menu..."<<endl;
+            return;
+        }
         Pilha<string> p(l.getN());
 
         bool ok;
@@ -324,7 +343,7 @@ public:
         cout << "Lista de produtos (por data): " << endl;
         for(int i = 0; i < l.getN(); i++){
             p.Empilha(l.BuscaPorPos(i).dataHoraAtual());
-            cout <<"Produto "<< i+1 << ": "<<  l.BuscaPorPos(i).getNome() << " | Data: "<< p.Desempilha(&ok) << endl;
+            cout <<"Produto "<< i+1 << ": "<<  l.BuscaPorPos(i).getNome() << " | Id: "<< l.BuscaPorPos(i).getId()<< " | Data: "<< p.Desempilha(&ok) << endl;
         }
 
         return;

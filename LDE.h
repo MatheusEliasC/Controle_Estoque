@@ -50,12 +50,16 @@ public:
         NoLDE<T>* atual = primeiro;
         NoLDE<T>* anterior = nullptr;
 
-        while(atual != nullptr && atual->valor.getTamanho() < valor.getTamanho())
+//        while(atual != nullptr && atual->valor.getTamanho() < valor.getTamanho())
+//        {
+//            anterior = atual;
+//            atual = atual->prox;
+//        }
+        while(atual != nullptr && atual->valor < valor)
         {
             anterior = atual;
             atual = atual->prox;
         }
-
         if(anterior == nullptr)
         {
             primeiro = novo;
@@ -92,7 +96,7 @@ public:
         NoLDE<T>* atual = primeiro;
         NoLDE<T>* anterior = NULL;
 
-        if(idx < 0 || idx > n)
+        if(idx <= 0 || idx > n)
             return false;
 
         while(atual && idx--)
@@ -134,16 +138,20 @@ public:
             return false;
         }
         NoLDE<T>* atual = primeiro;
-        int i = 1;
+        int i = 0;
+
         while(atual)
         {
-            cout << i << "- Produto: " << atual->valor.getNome()
-                 << " Quantidade: " << atual->valor.getQuantidade()
-                 << " Preço: "<< atual->valor.getPreco()
-                 << " Tamanho: "<< atual->valor.getTamanho()
-                 << " Id: "<< atual->valor.getId() << endl;
+//            cout << i << "- Produto: " << atual->valor.getNome()
+//                 << " Quantidade: " << atual->valor.getQuantidade()
+//                 << " Preço: "<< atual->valor.getPreco()
+//                 << " Tamanho: "<< atual->valor.getTamanho()
+//                 << " Id: "<< atual->valor.getId() << endl;
+//            atual = atual->prox;
+//            i++;
+            //cout << "Produto "<< i+1 << ": " << p->getNome() << " | Tamanho: " <<  atual->valor << endl;
+            cout << atual-> valor << endl;
             atual = atual->prox;
-            i++;
         }
         cout << endl;
     };

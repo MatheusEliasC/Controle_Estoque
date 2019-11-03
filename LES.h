@@ -17,6 +17,23 @@ private:
     int tamanhoMax;
     int n;
     T *v;
+
+    string verificaTamanho(int t){
+        switch (t){
+            case 0:
+                return "Pequeno";
+                break;
+            case 1:
+                return "Medio";
+                break;
+            case 2:
+                return "Grande";
+                break;
+            default:
+                break;
+        }
+    }
+    friend class Estoque;
 public:
 
     LES(){
@@ -40,7 +57,7 @@ public:
             cout << i+1<<"- Produto: " << v[i].getNome()
                  <<" Quantidade: " <<v[i].getQuantidade()
                  <<" Preço: "<<v[i].getPreco()
-                 <<" Tamanho: "<< v[i].getTamanho()
+                 <<" Tamanho: "<< verificaTamanho(v[i].getTamanho())
                  <<" Id: "<< v[i].getId()<<endl;
         }
     }
@@ -51,7 +68,7 @@ public:
             return false;//Impossível inserir, lista cheia
         }
         for (i = 0; i < n && v[i].getNome().at(0) < x.getNome().at(0); ++i) {
-            for(int j = 0; j < n && v[i].getNome().at(1) < x.getNome().at(1); ++j){ }
+            //for(int j = 0; j < n && v[i].getNome().at(1) < x.getNome().at(1); ++j){ }
         }
         for(int j = n;j>i; --j){
             v[j] = v[j-1];

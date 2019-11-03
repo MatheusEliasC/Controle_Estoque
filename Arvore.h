@@ -2,20 +2,20 @@
 
 using namespace std;
 
-template <typename T> class No {
+template <typename T> class NoArv {
 public:
     T valor;
-    No<T> *pai;
-    No<T> *esq;
-    No<T> *dir;
+    NoArv<T> *pai;
+    NoArv<T> *esq;
+    NoArv<T> *dir;
 };
 
 template <typename T> class IArvBinBusca {
 public:
     virtual bool Insere(T valor) = 0;
     virtual bool Remove(T valor) = 0;
-    virtual bool Remove(No<T> *ref) = 0;
-    virtual No<T> *Busca(T valor) = 0;
+    virtual bool Remove(NoArv<T> *ref) = 0;
+    virtual NoArv<T> *Busca(T valor) = 0;
     virtual ~IArvBinBusca() {}
 
 private:
@@ -24,9 +24,9 @@ private:
 
 template <typename T> class ArvBin {
 private:
-    No<T>* raiz;
+    NoArv<T>* raiz;
     int n;
-    No<T>* sucessor(No<T>* x){
+    NoArv<T>* sucessor(NoArv<T>* x){
         x=x->dir;
         while(x && x->esq)
             x=x->esq;
@@ -41,15 +41,15 @@ public:
     };
 
     bool Insere(T valor) {
-        No<T> *novo = new No<T>;
+        NoArv<T> *novo = new NoArv<T>;
 
         novo->valor = valor;
         novo->esq = nullptr;
         novo->dir = nullptr;
         novo->pai = nullptr;
 
-        No<T> *anterior = nullptr;
-        No<T> *atual = raiz;
+        NoArv<T> *anterior = nullptr;
+        NoArv<T> *atual = raiz;
 
         while (atual) {
             anterior = atual;
@@ -73,8 +73,8 @@ public:
         return true;
     }
     bool Remove(T valor) {
-        No<T>* anterior = nullptr;
-        No<T>* atual = raiz;
+        NoArv<T>* anterior = nullptr;
+        NoArv<T>* atual = raiz;
 
         while(atual && atual->valor != valor){
             anterior = atual;
@@ -100,8 +100,8 @@ public:
             n--;
         }
         else if(filhos == 1){
-            No<T>* base = atual->esq;
-            No<T>* pai = atual->pai;
+            NoArv<T>* base = atual->esq;
+            NoArv<T>* pai = atual->pai;
 
             if(!base)
                 base = atual->dir;
@@ -125,10 +125,10 @@ public:
             atual->valor = valorSucessor;
         }
     }
-    bool Remove(No<T> *r) {}
-    No<T> *Busca(T valor) {
-        No<T>* anterior = nullptr;
-        No<T>* atual = raiz;
+    bool Remove(NoArv<T> *r) {}
+    NoArv<T> *Busca(T valor) {
+        NoArv<T>* anterior = nullptr;
+        NoArv<T>* atual = raiz;
 
         while(atual && atual->valor != valor){
             anterior = atual;
