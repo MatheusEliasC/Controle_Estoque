@@ -15,13 +15,12 @@ void menuCrud() {
     cout << "|                         2- REMOVER PRODUTO                            |"<< endl;
     cout << "|                         3- LISTAR PRODUTOS                            |"<< endl;
     cout << "|                         4- BUSCAR PRODUTO5                            |"<< endl;
-//    cout << "|                                                                       |"<< endl;
     cout << "|                               5- SAIR                                 |"<< endl;
     cout << "+.......................................................................+" << std::endl;
 };
 
 void menuListar(){\
-    cout<< "\n/OP??ES DE LISTA:"<<endl;
+    cout<< "\nOP??ES DE LISTA:"<<endl;
     cout<< "\n1 - POR TAMANHO\n2 - POR PRECO\n3 - POR NOME\n4 - POR DATA\n5 - VOLTAR\n";
 };
 

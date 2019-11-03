@@ -22,9 +22,6 @@ class Estoque{
 private:
     int capacidadeMax;
     LES<Produto> l;
-    //LDE<int> ld;
-    //Pilha<struct tm*> p;
-    //Fila<>
     int quantidadeAtual;
 
 
@@ -32,7 +29,6 @@ public:
     explicit Estoque(){ }
     explicit Estoque(int Max){
         l.setTamanhoMax(Max);
-        //Pilha<Produto> p(Max);
 
         capacidadeMax = Max;
         quantidadeAtual = 0;
@@ -42,7 +38,6 @@ public:
         ostringstream strs;
         strs << valor;
         string valorStr = strs.str();
-        cout << valorStr << endl;
         replace( valorStr.begin(), valorStr.end(), '.', ',');
         return valorStr;
     }
@@ -56,6 +51,29 @@ public:
 
                 /* Verfica se o vetor está em ordem, no caso ele coloca em ordem crescente, para decrescente trocar '>' por '<' */
                 if (vet[i].getPreco() > vet[i + 1].getPreco()) {
+                    /* Caso não esteja, ordena */
+                    Produto aux = vet[i];
+                    vet[i] = vet[i + 1];
+                    vet[i + 1] = aux;
+                    flag = 1;
+                }
+            }
+            /* Repete enquanto algum valor estiver fora de ordem */
+        } while (flag == 1);
+
+        Produto *v = vet;
+        return v;
+    }
+
+    static Produto* bubble_sortTamanho (Produto* vet, int max) {
+        int flag;
+
+        do {
+            flag = 0;
+            for (int i = 0; i < (max - 1); i++) {
+
+                /* Verfica se o vetor está em ordem, no caso ele coloca em ordem crescente, para decrescente trocar '>' por '<' */
+                if (vet[i].getTamanho() > vet[i + 1].getTamanho()) {
                     /* Caso não esteja, ordena */
                     Produto aux = vet[i];
                     vet[i] = vet[i + 1];
@@ -138,14 +156,11 @@ public:
         }
 
         Produto novo(nomeStr, quantidade, preco, tamanho);
-        //l.Insere(novo);
-        //p.Empilha(novo.getData());
-        //ld.Insere(novo.getTamanho());
         if (l.Insere(novo)){
-            cout << endl << "Produto adicionado com sucesso!" << endl;
+            cout << endl << "Produto adicionado com sucesso!" << endl << endl;
             //Por fim, é criado um objeto do tipo Produto com os parametros recebidos pelas variáveis anteriores.
-            cout << "Informações do produto inserido: " << endl << endl
-                 << "Nome: " << novo.getNome() << endl
+            cout << "Informações do produto inserido: " << endl
+                 << "Nome : " << novo.getNome() << endl
                  << "Preco: R$ " << getValor(novo.getPreco()) << endl
                  << "Quantidade: " << novo.getQuantidade() << endl
                  << "Tamanho: " << novo.getTamanho() << endl
@@ -246,11 +261,25 @@ public:
     };
 
     void ListarTamanho(){
-//        for(int i = 0; i < l.getN(); i++){
-//            cout << "Nome do produto: " <<  l.BuscaPorPos(i).getNome() << "Tamanho: " <<  ld.Busca(l.BuscaPorPos(i).getTamanho());
-//        }
-        //TODO Aplicar LDE
-        cout << "Falta LDE!" << endl;
+        if(l.getN()==0){
+            cout << "Nenhum produto encontrado! Voltando ao menu!" << endl;
+            return;
+        }
+        Produto *temp = nullptr;
+        for(int i = 0;i<l.getN();i++){
+            temp[i]= l.BuscaPorPos(i);
+        }
+        Produto* v = bubble_sortTamanho(temp,l.getN());
+        LDE<Produto> ld;
+        for(int i = 0; i< l.getN(); i++){
+            ld.Insere(v[i]);
+        }
+        cout << "Listando produtos: " << endl;
+        ld.Imprime();
+        for(int i = 0; i< l.getN(); i++){
+            ld.Remove(i);
+        }
+        cout << "Voltando ao menu!" << endl;
     };
 
     void ListarPreco(){
