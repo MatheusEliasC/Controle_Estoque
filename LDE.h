@@ -74,6 +74,40 @@ public:
         n++;
     };
 
+    bool InsereNome(string valor)
+    {
+        NoLDE<T>* novo = new NoLDE<T>;
+
+        novo->valor = valor;
+        novo->prox = nullptr;
+
+        NoLDE<T>* atual = primeiro;
+        NoLDE<T>* anterior = nullptr;
+
+//        while(atual != nullptr && atual->valor.getTamanho() < valor.getTamanho())
+//        {
+//            anterior = atual;
+//            atual = atual->prox;
+//        }
+        while(atual != nullptr && atual->valor.at(0) < valor.at(0))
+        {
+            anterior = atual;
+            atual = atual->prox;
+        }
+        if(anterior == nullptr)
+        {
+            primeiro = novo;
+        }
+        else
+        {
+            anterior->prox = novo;
+        }
+
+        novo->prox = atual;
+
+        n++;
+    };
+
     int Busca(T valor)
     {
         NoLDE<T>* atual = primeiro;
@@ -90,6 +124,8 @@ public:
         }
         return -1;
     };
+
+
 
     bool Remove(int idx)
     {
@@ -151,6 +187,31 @@ public:
             //cout << "Produto "<< i+1 << ": " << p->getNome() << " | Tamanho: " <<  atual->valor << endl;
             cout << atual-> valor << endl;
             atual = atual->prox;
+        }
+        cout << endl;
+    };
+
+    bool ImprimeNome()
+    {
+        if(n==0){
+            return false;
+        }
+        NoLDE<T>* atual = primeiro;
+        int i = 0;
+
+        while(atual)
+        {
+//            cout << i << "- Produto: " << atual->valor.getNome()
+//                 << " Quantidade: " << atual->valor.getQuantidade()
+//                 << " Preço: "<< atual->valor.getPreco()
+//                 << " Tamanho: "<< atual->valor.getTamanho()
+//                 << " Id: "<< atual->valor.getId() << endl;
+//            atual = atual->prox;
+//            i++;
+            //cout << "Produto "<< i+1 << ": " << p->getNome() << " | Tamanho: " <<  atual->valor << endl;
+            cout << "Produto "<< i+1<< ": "<< atual->valor << endl;
+            atual = atual->prox;
+            i++;
         }
         cout << endl;
     };
